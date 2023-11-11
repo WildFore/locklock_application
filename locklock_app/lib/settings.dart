@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/subpages/calibrateDevice.dart';
 
@@ -13,34 +14,60 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 360,
-        height: 500,       
+        width: 330,
+        height: 450,
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 65, 65, 65),
           borderRadius: BorderRadius.all(Radius.circular(25)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(top:20),
-            child: Column(
-              children: [
-                Container(
-                  width: 360,
-                  height: 70,
-                  child: ElevatedButton(
-                    onPressed: () {
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(),
+          child: Column(
+            children: [
+              Container(
+                width: 360,
+                height: 70,
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.all(Radius.circular(0)),
+                ),
+                child: ElevatedButton.icon(
+                  icon: const Icon(
+                    CupertinoIcons.arrow_clockwise_circle_fill,
+                    size: 30,
+                  ),
+                  style: const ButtonStyle(
+                    padding:
+                        MaterialStatePropertyAll(EdgeInsets.only(left: 15)),
+                    elevation: MaterialStatePropertyAll(0),
+                    backgroundColor:
+                        MaterialStatePropertyAll(Colors.transparent),
+                  ),
+                  onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (BuildContext context){
+                        MaterialPageRoute(builder: (BuildContext context) {
                       return const CalibrateDevicePage();
-                      })
-                     );
-                    },
-                    child: const Text("Calibrate device")
-                    ),
-                )
-              ],
-            ),
+                    }));
+                  },
+                  label: const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Calibrate device",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      )),
+                ),
+              ),
+              Container(
+                width: 340,
+                height: 1,
+                color: const Color.fromARGB(255, 235, 235, 235),
+              )
+            ],
           ),
         ),
-      );
+      ),
+    );
   }
 }

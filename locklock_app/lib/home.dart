@@ -12,26 +12,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 360,
-        height: 500,       
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 89, 195, 195),
-          borderRadius: BorderRadius.all(Radius.circular(25)),
+          width: 330,
+          height: 450,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 89, 195, 195),
+            borderRadius: BorderRadius.all(Radius.circular(25)),
           ),
           child: const Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 380),
-              child: Text(
-                "Locked",
-                style: TextStyle(
-                  fontSize: 48,
-                  fontFamily: "ArchivoBlack",
-                  fontWeight: FontWeight.w500
-                ),
-              )
-            ),
-          )
-        ),
-      );
+                padding: EdgeInsets.only(top: 330),
+                child: Text(
+                  "Locked",
+                  style: TextStyle(
+                      fontSize: 48,
+                      fontFamily: "ArchivoBlack",
+                      fontWeight: FontWeight.w500),
+                )),
+          )),
+    );
   }
 }

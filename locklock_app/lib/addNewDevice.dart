@@ -12,56 +12,57 @@ class _AddDevicePageState extends State<AddDevicePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        width: 360,
-        height: 500,
-        decoration: const BoxDecoration(
-           color: Color.fromARGB(255, 82, 72, 156),
-           borderRadius: BorderRadius.all(Radius.circular(25)),
-        ),
-        padding: EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 50),
-        child: Column(
-          children: [
-            const Text(
-                "Let's add your device.",
-                style: TextStyle(
-                  fontSize: 48,
-                  fontFamily: "ArchivoBlack",
-                  fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 30, 30, 30),
-                ),
-              ),
-            Container(
-              height: 100,
-              width: 300,
+        child: Container(
+      width: 330,
+      height: 450,
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 82, 72, 156),
+        borderRadius: BorderRadius.all(Radius.circular(25)),
+      ),
+      padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 50),
+      child: Column(
+        children: [
+          const Text(
+            "Let's add your device.",
+            style: TextStyle(
+              fontSize: 48,
+              fontFamily: "ArchivoBlack",
+              fontWeight: FontWeight.w500,
+              color: Color.fromARGB(255, 30, 30, 30),
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              child: Container(
-                width: 300,
-                height: 70,
-                child: ElevatedButton(
+          ),
+          Container(
+            height: 50,
+            width: 300,
+          ),
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            child: Container(
+              width: 300,
+              height: 70,
+              child: ElevatedButton(
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 244, 91, 104)),
+                    backgroundColor: MaterialStatePropertyAll(
+                        Color.fromARGB(255, 244, 91, 104)),
                   ),
                   onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (BuildContext context){
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
                       return const PairDevicePage();
-                    })
-                  );
-                }, child: const Text(
-                  "Pair device", 
-                  style: TextStyle(
-                    fontFamily: "ArchivoBlack",
-                    fontSize: 24,
-                    color: Color.fromARGB(255, 30, 30, 30),
-                  ),)),
-              ),
-            )
-          ],
-        ),
-      )
-      );
+                    }));
+                  },
+                  child: const Text(
+                    "Pair device",
+                    style: TextStyle(
+                      fontFamily: "ArchivoBlack",
+                      fontSize: 24,
+                      color: Color.fromARGB(255, 30, 30, 30),
+                    ),
+                  )),
+            ),
+          )
+        ],
+      ),
+    ));
   }
 }
