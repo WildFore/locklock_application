@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
               fontSize: 36,
               color: Color.fromARGB(255, 235, 235, 235),
               fontFamily: "ArchivoBlack",
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w600),
         ),
         body: pages[_selectedIndexPage],
         backgroundColor: Color.fromARGB(255, 30, 30, 30),

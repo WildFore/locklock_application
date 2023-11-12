@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/subpages/calibrateDevice.dart';
+import 'package:locklock_app/subpages/infoPage.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -33,6 +34,49 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 child: ElevatedButton.icon(
                   icon: const Icon(
+                    CupertinoIcons.info_circle_fill,
+                    size: 30,
+                  ),
+                  style: const ButtonStyle(
+                    padding:
+                        MaterialStatePropertyAll(EdgeInsets.only(left: 15)),
+                    elevation: MaterialStatePropertyAll(0),
+                    backgroundColor:
+                        MaterialStatePropertyAll(Colors.transparent),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const InfoPage();
+                    }));
+                  },
+                  label: const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Info",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: "ArchivoBlack",
+                        ),
+                      )),
+                ),
+              ),
+              Container(
+                width: 340,
+                height: 1,
+                color: Color.fromARGB(50, 235, 235, 235),
+              ),
+              Container(
+                width: 360,
+                height: 70,
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25)),
+                ),
+                child: ElevatedButton.icon(
+                  icon: const Icon(
                     CupertinoIcons.arrow_clockwise_circle_fill,
                     size: 30,
                   ),
@@ -55,6 +99,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         "Calibrate device",
                         style: TextStyle(
                           fontSize: 20,
+                          fontFamily: "ArchivoBlack",
                         ),
                       )),
                 ),
@@ -62,8 +107,8 @@ class _SettingsPageState extends State<SettingsPage> {
               Container(
                 width: 340,
                 height: 1,
-                color: const Color.fromARGB(255, 235, 235, 235),
-              )
+                color: const Color.fromARGB(50, 235, 235, 235),
+              ),
             ],
           ),
         ),
