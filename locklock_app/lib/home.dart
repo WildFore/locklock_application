@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:figma_squircle/figma_squircle.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,10 +15,13 @@ class _HomePageState extends State<HomePage> {
       child: Container(
           width: 330,
           height: 450,
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 89, 195, 195),
-            borderRadius: BorderRadius.all(Radius.circular(25)),
-          ),
+          decoration: ShapeDecoration(
+              color: Color.fromARGB(255, 89, 195, 195),
+              shape: SmoothRectangleBorder(
+                  borderRadius: SmoothBorderRadius(
+                cornerRadius: 25,
+                cornerSmoothing: 0.8,
+              ))),
           child: const Center(
             child: Padding(
                 padding: EdgeInsets.only(top: 330),

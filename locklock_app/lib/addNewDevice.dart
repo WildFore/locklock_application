@@ -1,3 +1,4 @@
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/subpages/pairDevice.dart';
 
@@ -15,11 +16,16 @@ class _AddDevicePageState extends State<AddDevicePage> {
         child: Container(
       width: 330,
       height: 450,
-      decoration: const BoxDecoration(
+      decoration: ShapeDecoration(
+        shape: SmoothRectangleBorder(
+          borderRadius: SmoothBorderRadius(
+            cornerRadius: 25,
+            cornerSmoothing: 0.8,
+          ),
+        ),
         color: Color.fromARGB(255, 82, 72, 156),
-        borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
-      padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 50),
+      padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 70),
       child: Column(
         children: [
           const Text(
@@ -36,7 +42,8 @@ class _AddDevicePageState extends State<AddDevicePage> {
             width: 300,
           ),
           ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius:
+                SmoothBorderRadius(cornerRadius: 15, cornerSmoothing: 0.8),
             child: Container(
               width: 300,
               height: 70,
@@ -55,7 +62,7 @@ class _AddDevicePageState extends State<AddDevicePage> {
                     "Pair device",
                     style: TextStyle(
                       fontFamily: "ArchivoBlack",
-                      fontSize: 24,
+                      fontSize: 28,
                       color: Color.fromARGB(255, 30, 30, 30),
                     ),
                   )),

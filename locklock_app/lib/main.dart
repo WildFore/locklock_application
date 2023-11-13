@@ -40,10 +40,10 @@ class _HomeState extends State<Home> {
           backgroundColor: Color.fromARGB(255, 30, 30, 30),
           title: Padding(
             child: Text(appLanding),
-            padding: const EdgeInsets.only(left: 10, top: 110),
+            padding: const EdgeInsets.only(left: 15, top: 110),
           ),
           titleTextStyle: const TextStyle(
-              fontSize: 36,
+              fontSize: 30,
               color: Color.fromARGB(255, 235, 235, 235),
               fontFamily: "ArchivoBlack",
               fontWeight: FontWeight.w600),
