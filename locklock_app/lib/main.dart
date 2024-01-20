@@ -4,7 +4,6 @@ import 'package:locklock_app/addNewDevice.dart';
 import 'package:locklock_app/home.dart';
 import 'package:locklock_app/settings.dart';
 import 'dart:ui';
-import 'home.dart';
 
 void main() {
   runApp(const Home());
@@ -71,8 +70,8 @@ class _HomeState extends State<Home> {
                 topRight: Radius.circular(30), topLeft: Radius.circular(30)),
             child: NavigationBar(
                 animationDuration: const Duration(microseconds: 0),
-                backgroundColor: Colors.transparent,
-                indicatorColor: antiFlashWhite,
+                backgroundColor: Color.fromARGB(255, 44, 44, 44),
+                indicatorColor: const Color.fromARGB(0, 45, 45, 45),
                 selectedIndex: _selectedIndexPage,
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                 indicatorShape: const RoundedRectangleBorder(
@@ -80,24 +79,22 @@ class _HomeState extends State<Home> {
                 ),
                 destinations: const [
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.plus_circle_fill,
+                      icon: Icon(CupertinoIcons.plus_circle,
                           color: Color.fromARGB(255, 235, 235, 235)),
                       selectedIcon: Icon(CupertinoIcons.plus_circle_fill,
-                          color: Color.fromARGB(255, 30, 30, 30)),
+                          color: Color.fromARGB(255, 235, 235, 235)),
                       label: "Add new device"),
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.house_fill,
+                      icon: Icon(CupertinoIcons.house,
                           color: Color.fromARGB(255, 235, 235, 235)),
                       selectedIcon: Icon(CupertinoIcons.house_fill,
-                          color: Color.fromARGB(255, 30, 30, 30)),
+                          color: Color.fromARGB(255, 235, 235, 235)),
                       label: "Home"),
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.gear_alt_fill,
+                      icon: Icon(CupertinoIcons.gear_alt,
                           color: Color.fromARGB(255, 235, 235, 235)),
-                      selectedIcon: Icon(
-                        CupertinoIcons.gear_alt_fill,
-                        color: Color.fromARGB(255, 30, 30, 30),
-                      ),
+                      selectedIcon: Icon(CupertinoIcons.gear_alt_fill,
+                          color: Color.fromARGB(255, 235, 235, 235)),
                       label: "Settings")
                 ],
                 onDestinationSelected: (int index) {

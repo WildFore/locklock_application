@@ -44,23 +44,26 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Column(
           children: [
-            Container(
-              width: 250,
-              height: 30,
-              child: ClipRRect(
-                borderRadius:
-                    SmoothBorderRadius(cornerRadius: 15, cornerSmoothing: 0.8),
-                child: ElevatedButton(
-                  style: const ButtonStyle(
-                    elevation: MaterialStatePropertyAll(0),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Container(
+                width: 280,
+                height: 30,
+                child: ClipRRect(
+                  borderRadius: SmoothBorderRadius(
+                      cornerRadius: 15, cornerSmoothing: 0.8),
+                  child: ElevatedButton(
+                    style: const ButtonStyle(
+                      elevation: MaterialStatePropertyAll(0),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        stateOfDoor = !stateOfDoor;
+                        updateColorData();
+                      });
+                    },
+                    child: const Text("Switch"),
                   ),
-                  onPressed: () {
-                    setState(() {
-                      stateOfDoor = !stateOfDoor;
-                      updateColorData();
-                    });
-                  },
-                  child: const Text("Switch"),
                 ),
               ),
             ),
