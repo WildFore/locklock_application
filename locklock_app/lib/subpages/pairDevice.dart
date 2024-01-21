@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locklock_app/appColors.dart';
 
 class PairDevicePage extends StatefulWidget {
   const PairDevicePage({super.key});
@@ -24,7 +25,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
             fontFamily: "ArchivoBlack",
             fontWeight: FontWeight.w500),
       ),
-      body: const Column(
+      body: Column(
         children: [
           Padding(
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -52,8 +53,8 @@ class _PairDevicePageState extends State<PairDevicePage> {
                   ),
                 ),
                 style: TextStyle(
-                  backgroundColor: Color.fromARGB(255, 30, 30, 30),
-                  color: Color.fromARGB(255, 235, 235, 235),
+                  backgroundColor: Colors.transparent,
+                  color: AppColors.gray,
                   fontFamily: "ArchivoBlack",
                   fontSize: 20,
                 ),
@@ -84,8 +85,8 @@ class _PairDevicePageState extends State<PairDevicePage> {
                 ),
               ),
               style: TextStyle(
-                backgroundColor: Color.fromARGB(255, 30, 30, 30),
-                color: Color.fromARGB(255, 235, 235, 235),
+                backgroundColor: Colors.transparent,
+                color: AppColors.gray,
                 fontFamily: "ArchivoBlack",
                 fontSize: 20,
               ),

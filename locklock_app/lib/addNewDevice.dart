@@ -1,6 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/subpages/pairDevice.dart';
+import 'appColors.dart';
 
 class AddDevicePage extends StatefulWidget {
   const AddDevicePage({super.key});
@@ -19,22 +20,22 @@ class _AddDevicePageState extends State<AddDevicePage> {
       decoration: ShapeDecoration(
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
-            cornerRadius: 25,
+            cornerRadius: 35,
             cornerSmoothing: 0.8,
           ),
         ),
-        color: Color.fromARGB(255, 82, 72, 156),
+        color: AppColors.ultraViolet,
       ),
       padding: const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 70),
       child: Column(
         children: [
-          const Text(
+          Text(
             "Let's add your device.",
             style: TextStyle(
               fontSize: 48,
               fontFamily: "ArchivoBlack",
               fontWeight: FontWeight.w500,
-              color: Color.fromARGB(255, 30, 30, 30),
+              color: AppColors.gray,
             ),
           ),
           Container(
@@ -48,9 +49,9 @@ class _AddDevicePageState extends State<AddDevicePage> {
               width: 300,
               height: 70,
               child: ElevatedButton(
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 244, 91, 104)),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll(AppColors.crayola),
                   ),
                   onPressed: () {
                     Navigator.of(context).push(
@@ -58,12 +59,12 @@ class _AddDevicePageState extends State<AddDevicePage> {
                       return const PairDevicePage();
                     }));
                   },
-                  child: const Text(
+                  child: Text(
                     "Pair device",
                     style: TextStyle(
                       fontFamily: "ArchivoBlack",
                       fontSize: 28,
-                      color: Color.fromARGB(255, 30, 30, 30),
+                      color: AppColors.gray,
                     ),
                   )),
             ),

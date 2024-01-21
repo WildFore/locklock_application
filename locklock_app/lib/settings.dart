@@ -22,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
             color: Color.fromARGB(255, 65, 65, 65),
             shape: SmoothRectangleBorder(
                 borderRadius: SmoothBorderRadius(
-                    cornerRadius: 25, cornerSmoothing: 0.8))),
+                    cornerRadius: 35, cornerSmoothing: 0.8))),
         child: Padding(
           padding: const EdgeInsets.only(),
           child: Column(
@@ -37,11 +37,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: ClipRRect(
                   borderRadius: const SmoothBorderRadius.only(
                     topLeft: SmoothRadius(
-                      cornerRadius: 25,
+                      cornerRadius: 35,
                       cornerSmoothing: 0.8,
                     ),
                     topRight: SmoothRadius(
-                      cornerRadius: 25,
+                      cornerRadius: 35,
                       cornerSmoothing: 0.8,
                     ),
                     bottomRight: SmoothRadius(

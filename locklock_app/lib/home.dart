@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'appColors.dart';
 import 'main.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,18 +13,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Color databoxColor = ColorLocked.setColor;
   bool stateOfDoor = true;
+  String doorLocktstate = "Locked";
 
-  void updateColorData() {
+  void updateData() {
     setState(() {
       databoxColor = _calculateUpdatedColor();
+      doorLocktstate = _newLockedData();
     });
   }
 
+  void updateTextDoorState() {}
+
   Color _calculateUpdatedColor() {
     if (stateOfDoor) {
-      return Color.fromARGB(255, 89, 195, 195);
+      return AppColors.robinEggBlue;
     } else {
-      return Color.fromARGB(255, 244, 91, 104);
+      return AppColors.crayola;
+    }
+  }
+
+  String _newLockedData() {
+    if (stateOfDoor) {
+      return "Locked";
+    } else {
+      return "Unlocked";
     }
   }
 
@@ -37,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           color: databoxColor,
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(
-              cornerRadius: 25,
+              cornerRadius: 35,
               cornerSmoothing: 0.8,
             ),
           ),
@@ -59,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       setState(() {
                         stateOfDoor = !stateOfDoor;
-                        updateColorData();
+                        updateData();
                       });
                     },
                     child: const Text("Switch"),
@@ -67,12 +80,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            const Center(
+            Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 330),
+                padding: const EdgeInsets.only(top: 310),
                 child: Text(
-                  "Locked",
-                  style: TextStyle(
+                  doorLocktstate,
+                  style: const TextStyle(
                     fontSize: 48,
                     fontFamily: "ArchivoBlack",
                     fontWeight: FontWeight.w500,
