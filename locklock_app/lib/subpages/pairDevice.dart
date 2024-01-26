@@ -138,7 +138,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
                       }
                       buttonIsActive = false;
 
-                      var url = Uri.https('192.168.4.1', 'whatsit/create');
+                      var url = Uri.http('192.168.4.1', '/wifi');
                       var response = await http.post(url,
                           body: {'ssid': ssid, 'password': password});
                       print('Response status: ${response.statusCode}');
@@ -146,7 +146,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
                       buttonIsActive = true;
 
                       setState(() {
-                        output = response.body;
+                        output = response.statusCode.toString();
                       });
                     },
                     child: Text(
