@@ -35,11 +35,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           centerTitle: false,
-          toolbarHeight: 150,
+          toolbarHeight: 140,
           elevation: 0,
           backgroundColor: AppColors.gray,
           title: Padding(
@@ -69,9 +73,7 @@ class _HomeState extends State<Home> {
                 indicatorColor: const Color.fromARGB(0, 45, 45, 45),
                 selectedIndex: _selectedIndexPage,
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-                indicatorShape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                ),
+                indicatorShape: const CircleBorder(),
                 destinations: [
                   NavigationDestination(
                       icon: Icon(CupertinoIcons.plus_circle,
