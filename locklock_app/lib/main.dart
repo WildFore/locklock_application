@@ -65,8 +65,10 @@ class _HomeState extends State<Home> {
                 topRight: Radius.circular(30), topLeft: Radius.circular(30)),
           ),
           child: ClipRRect(
-            borderRadius:
-                SmoothBorderRadius(cornerRadius: 30, cornerSmoothing: 0.8),
+            borderRadius: SmoothBorderRadius.only(
+              topLeft: SmoothRadius(cornerRadius: 30, cornerSmoothing: 0.8),
+              topRight: SmoothRadius(cornerRadius: 30, cornerSmoothing: 0.8),
+            ),
             child: NavigationBar(
                 animationDuration: const Duration(microseconds: 0),
                 backgroundColor: const Color.fromARGB(255, 44, 44, 44),

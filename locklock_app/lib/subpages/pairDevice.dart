@@ -2,6 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:locklock_app/home.dart';
+import 'package:http/http.dart' as http;
 
 class PairDevicePage extends StatefulWidget {
   const PairDevicePage({super.key});
@@ -11,6 +12,14 @@ class PairDevicePage extends StatefulWidget {
 }
 
 class _PairDevicePageState extends State<PairDevicePage> {
+  bool buttonIsActive = true;
+
+  String ssid = "";
+
+  String password = "";
+
+  String output = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +30,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
         backgroundColor: Color.fromARGB(255, 30, 30, 30),
         centerTitle: true,
         title: Text("Let's pair your device."),
-        titleTextStyle: const TextStyle(
+        titleTextStyle: TextStyle(
             fontSize: 20,
             color: Color.fromARGB(255, 235, 235, 235),
             fontFamily: "ArchivoBlack",
@@ -45,6 +54,9 @@ class _PairDevicePageState extends State<PairDevicePage> {
             child: Padding(
               padding: EdgeInsets.only(left: 20, right: 20, top: 20),
               child: TextField(
+                onChanged: (value) {
+                  ssid = value;
+                },
                 style: TextStyle(
                   fontFamily: "ArchivoBlack",
                   fontSize: 20,
@@ -81,6 +93,9 @@ class _PairDevicePageState extends State<PairDevicePage> {
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20, top: 20),
             child: TextField(
+              onChanged: (value) {
+                password = value;
+              },
               style: TextStyle(
                 fontFamily: "ArchivoBlack",
                 fontSize: 20,
@@ -117,7 +132,23 @@ class _PairDevicePageState extends State<PairDevicePage> {
                       backgroundColor:
                           MaterialStatePropertyAll(AppColors.crayola),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (!buttonIsActive) {
+                        return;
+                      }
+                      buttonIsActive = false;
+
+                      var url = Uri.https('192.168.4.1', 'whatsit/create');
+                      var response = await http.post(url,
+                          body: {'ssid': ssid, 'password': password});
+                      print('Response status: ${response.statusCode}');
+                      print('Response body: ${response.body}');
+                      buttonIsActive = true;
+
+                      setState(() {
+                        output = response.body;
+                      });
+                    },
                     child: Text(
                       "Pair device",
                       style: TextStyle(
@@ -128,7 +159,18 @@ class _PairDevicePageState extends State<PairDevicePage> {
                     )),
               ),
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text(
+              output,
+              style: TextStyle(
+                fontFamily: "ArchivoBlack",
+                fontSize: 20,
+                color: AppColors.antiFlashWhite,
+              ),
+            ),
+          ),
         ],
       ),
     );
