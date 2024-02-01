@@ -1,4 +1,5 @@
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/subpages/pairDevice.dart';
 import 'appColors.dart';
@@ -44,12 +45,17 @@ class _AddDevicePageState extends State<AddDevicePage> {
           ),
           ClipRRect(
             borderRadius:
-                SmoothBorderRadius(cornerRadius: 15, cornerSmoothing: 0.8),
+                SmoothBorderRadius(cornerRadius: 25, cornerSmoothing: 0.8),
             child: Container(
               width: 300,
               height: 70,
-              child: ElevatedButton(
+              child: ElevatedButton.icon(
+                  icon: Icon(
+                    CupertinoIcons.add_circled_solid,
+                    color: AppColors.gray,
+                  ),
                   style: ButtonStyle(
+                    splashFactory: NoSplash.splashFactory,
                     backgroundColor:
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
@@ -59,7 +65,7 @@ class _AddDevicePageState extends State<AddDevicePage> {
                       return const PairDevicePage();
                     }));
                   },
-                  child: Text(
+                  label: Text(
                     "Pair device",
                     style: TextStyle(
                       fontFamily: "ArchivoBlack",

@@ -7,4 +7,5 @@ class AppColors {
   static Color antiFlashWhite = const Color.fromARGB(255, 235, 235, 235);
   static Color crayola = const Color.fromARGB(255, 244, 91, 104);
   static Color gray = const Color.fromARGB(255, 30, 30, 30);
+  static Color lightGray = const Color.fromARGB(255, 65, 65, 65);
 }

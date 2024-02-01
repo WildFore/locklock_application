@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:locklock_app/home.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart';
 
 class PairDevicePage extends StatefulWidget {
   const PairDevicePage({super.key});
@@ -129,10 +130,28 @@ class _PairDevicePageState extends State<PairDevicePage> {
                 height: 60,
                 child: ElevatedButton(
                     style: ButtonStyle(
+                      splashFactory: NoSplash.splashFactory,
                       backgroundColor:
                           MaterialStatePropertyAll(AppColors.crayola),
                     ),
                     onPressed: () async {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => CupertinoAlertDialog(
+                          title: const Text('Processing'),
+                          content: const Text('Data was sent to your device'),
+                          actions: <Widget>[
+                            TextButton(
+                              style: const ButtonStyle(
+                                splashFactory: NoSplash.splashFactory,
+                              ),
+                              onPressed: () => Navigator.pop(context, 'Ok'),
+                              child: const Text('Ok'),
+                            ),
+                          ],
+                        ),
+                      );
+
                       if (!buttonIsActive) {
                         return;
                       }
