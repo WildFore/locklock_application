@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:locklock_app/services/auth_service.dart';
 import 'package:locklock_app/subpages/signIn.dart';
 import '../appColors.dart';
 
@@ -142,14 +143,9 @@ class _LoginPageState extends State<LoginPage> {
                           CupertinoIcons.person_add_solid,
                           size: 30,
                         ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return const SigninPage();
-                          }));
-                        },
+                        onPressed: () => AuthService().signInWithGoogle(),
                         label: Text(
-                          "Sign in",
+                          "Google",
                           style: TextStyle(
                               color: AppColors.antiFlashWhite,
                               fontFamily: "ArchivoBlack",
@@ -185,12 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: AppColors.gray,
                           size: 30,
                         ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return const LoginPage();
-                          }));
-                        },
+                        onPressed: () {},
                         label: Text(
                           "Login",
                           style: TextStyle(

@@ -1,12 +1,17 @@
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/addNewDevice.dart';
+import 'package:locklock_app/firebase_options.dart';
 import 'package:locklock_app/home.dart';
 import 'package:locklock_app/settings.dart';
 import 'appColors.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Home());
 }
 

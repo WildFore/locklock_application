@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140562258254",
+    "project_id": "looklock-bda41",
+    "storage_bucket": "looklock-bda41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140562258254:android:42c7e6279d82ed93d7261f",
+        "android_client_info": {
+          "package_name": "com.example.locklock_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6O95YTINoEU1KxHHLMonmNO9Wk84Tddw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
