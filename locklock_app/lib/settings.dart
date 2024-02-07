@@ -2,6 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
+import 'package:locklock_app/subpages/loginPage.dart';
 import 'package:locklock_app/subpages/calibrateDevice.dart';
 import 'package:locklock_app/subpages/infoPage.dart';
 
@@ -25,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 borderRadius: SmoothBorderRadius(
                     cornerRadius: 35, cornerSmoothing: 0.8))),
         child: Padding(
-          padding: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 80),
           child: Column(
             children: [
               Row(children: [
@@ -146,7 +147,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       bottomLeft:
                           SmoothRadius(cornerRadius: 35, cornerSmoothing: 0.8),
                       bottomRight:
-                          SmoothRadius(cornerRadius: 35, cornerSmoothing: 0.8)),
+                          SmoothRadius(cornerRadius: 20, cornerSmoothing: 0.8)),
                   child: Container(
                     width: 360,
                     height: 80,
@@ -189,6 +190,61 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 160,
+                      height: 80,
+                      color: Colors.transparent,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: ClipRRect(
+                        borderRadius: const SmoothBorderRadius.only(
+                            topLeft: SmoothRadius(
+                                cornerRadius: 20, cornerSmoothing: 0.8),
+                            topRight: SmoothRadius(
+                                cornerRadius: 20, cornerSmoothing: 0.8),
+                            bottomLeft: SmoothRadius(
+                                cornerRadius: 35, cornerSmoothing: 0.8),
+                            bottomRight: SmoothRadius(
+                                cornerRadius: 35, cornerSmoothing: 0.8)),
+                        child: Container(
+                          width: 160,
+                          height: 80,
+                          color: AppColors.lightGray,
+                          child: ElevatedButton.icon(
+                            icon: const Icon(
+                              CupertinoIcons.person_circle_fill,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return const LoginPage();
+                              }));
+                            },
+                            label: Text(
+                              "User",
+                              style: TextStyle(
+                                  color: AppColors.antiFlashWhite,
+                                  fontFamily: "ArchivoBlack",
+                                  fontSize: 20),
+                            ),
+                            style: ButtonStyle(
+                                splashFactory: NoSplash.splashFactory,
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor: MaterialStatePropertyAll(
+                                    Colors.transparent)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

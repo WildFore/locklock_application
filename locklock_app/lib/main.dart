@@ -71,26 +71,28 @@ class _HomeState extends State<Home> {
             ),
             child: NavigationBar(
                 animationDuration: const Duration(microseconds: 0),
-                backgroundColor: const Color.fromARGB(255, 44, 44, 44),
-                indicatorColor: const Color.fromARGB(0, 45, 45, 45),
+                backgroundColor: AppColors.gray,
+                indicatorColor: AppColors.ultraViolet,
                 selectedIndex: _selectedIndexPage,
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-                indicatorShape: const CircleBorder(),
+                indicatorShape: RoundedRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                        cornerRadius: 16, cornerSmoothing: 0.8)),
                 destinations: [
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.plus_circle,
+                      icon: Icon(CupertinoIcons.plus_circle_fill,
                           color: AppColors.antiFlashWhite),
                       selectedIcon: Icon(CupertinoIcons.plus_circle_fill,
                           color: AppColors.antiFlashWhite),
                       label: "Add new device"),
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.house,
+                      icon: Icon(CupertinoIcons.house_fill,
                           color: AppColors.antiFlashWhite),
                       selectedIcon: Icon(CupertinoIcons.house_fill,
                           color: AppColors.antiFlashWhite),
                       label: "Home"),
                   NavigationDestination(
-                      icon: Icon(CupertinoIcons.gear_alt,
+                      icon: Icon(CupertinoIcons.gear_alt_fill,
                           color: AppColors.antiFlashWhite),
                       selectedIcon: Icon(CupertinoIcons.gear_alt_fill,
                           color: AppColors.antiFlashWhite),

@@ -40,37 +40,38 @@ class _PairDevicePageState extends State<PairDevicePage> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 120, left: 20, right: 20),
+            padding: EdgeInsets.only(top: 160, left: 20, right: 20),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text("SSID",
                   style: TextStyle(
                       fontFamily: "ArchivoBlack",
-                      fontSize: 24,
+                      fontSize: 20,
                       color: AppColors.antiFlashWhite)),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(),
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 10),
               child: TextField(
                 onChanged: (value) {
                   ssid = value;
                 },
                 style: TextStyle(
-                  fontFamily: "ArchivoBlack",
-                  fontSize: 20,
-                ),
+                    fontFamily: "ArchivoBlack",
+                    fontSize: 20,
+                    color: AppColors.antiFlashWhite),
                 maxLength: 26,
                 decoration: InputDecoration(
+                  counterText: " ",
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.antiFlashWhite),
+                    borderSide: BorderSide(color: AppColors.lightGray),
                     borderRadius: SmoothBorderRadius(
                         cornerRadius: 20, cornerSmoothing: 0.8),
                   ),
                   filled: true,
-                  fillColor: AppColors.antiFlashWhite,
+                  fillColor: AppColors.lightGray,
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.gray),
                     borderRadius: SmoothBorderRadius(
@@ -87,12 +88,12 @@ class _PairDevicePageState extends State<PairDevicePage> {
               child: Text("Password",
                   style: TextStyle(
                       fontFamily: "ArchivoBlack",
-                      fontSize: 24,
+                      fontSize: 20,
                       color: AppColors.antiFlashWhite)),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
             child: TextField(
               onChanged: (value) {
                 password = value;
@@ -100,16 +101,17 @@ class _PairDevicePageState extends State<PairDevicePage> {
               style: TextStyle(
                 fontFamily: "ArchivoBlack",
                 fontSize: 20,
+                color: AppColors.antiFlashWhite,
               ),
               maxLength: 26,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.antiFlashWhite),
+                  borderSide: BorderSide(color: AppColors.lightGray),
                   borderRadius: SmoothBorderRadius(
                       cornerRadius: 20, cornerSmoothing: 0.8),
                 ),
                 filled: true,
-                fillColor: AppColors.antiFlashWhite,
+                fillColor: AppColors.lightGray,
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.gray),
                   borderRadius: SmoothBorderRadius(
@@ -122,13 +124,18 @@ class _PairDevicePageState extends State<PairDevicePage> {
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
             child: ClipRRect(
               borderRadius: SmoothBorderRadius(
-                cornerRadius: 20,
+                cornerRadius: 35,
                 cornerSmoothing: 0.8,
               ),
               child: Container(
                 width: 220,
-                height: 60,
-                child: ElevatedButton(
+                height: 80,
+                child: ElevatedButton.icon(
+                    icon: Icon(
+                      CupertinoIcons.add_circled_solid,
+                      size: 30,
+                      color: AppColors.gray,
+                    ),
                     style: ButtonStyle(
                       splashFactory: NoSplash.splashFactory,
                       backgroundColor:
@@ -168,11 +175,11 @@ class _PairDevicePageState extends State<PairDevicePage> {
                         output = response.statusCode.toString();
                       });
                     },
-                    child: Text(
+                    label: Text(
                       "Pair device",
                       style: TextStyle(
                         fontFamily: "ArchivoBlack",
-                        fontSize: 28,
+                        fontSize: 20,
                         color: AppColors.gray,
                       ),
                     )),
