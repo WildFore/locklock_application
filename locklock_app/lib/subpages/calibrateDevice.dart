@@ -20,7 +20,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
         elevation: 0,
         backgroundColor: Color.fromARGB(255, 30, 30, 30),
         centerTitle: true,
-        title: Text("Calibrate your device"),
+        title: Text(""),
         titleTextStyle: const TextStyle(
             fontSize: 20,
             color: Color.fromARGB(255, 235, 235, 235),
@@ -29,14 +29,14 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
       ),
       body: Column(
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 80),
             child: Center(
-              child: Text(
-                "🫨",
-                style: TextStyle(fontSize: 120),
-              ),
-            ),
+                child: Icon(
+              CupertinoIcons.wifi,
+              size: 100,
+              color: AppColors.lightGray,
+            )),
           ),
           Padding(
               padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
@@ -52,12 +52,12 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
             padding: EdgeInsets.only(top: 100, left: 20, right: 20),
             child: ClipRRect(
               borderRadius: SmoothBorderRadius(
-                cornerRadius: 20,
+                cornerRadius: 25,
                 cornerSmoothing: 0.8,
               ),
               child: Container(
                 width: 260,
-                height: 60,
+                height: 70,
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
                     splashFactory: NoSplash.splashFactory,
