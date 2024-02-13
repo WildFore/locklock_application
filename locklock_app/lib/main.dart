@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+          useMaterial3: false,
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent),
@@ -65,6 +66,7 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: Container(
           height: 100,
           decoration: const BoxDecoration(
+            color: Colors.transparent,
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(30), topLeft: Radius.circular(30)),
           ),
@@ -75,7 +77,7 @@ class _HomeState extends State<Home> {
             ),
             child: NavigationBar(
                 animationDuration: const Duration(microseconds: 0),
-                backgroundColor: AppColors.gray,
+                backgroundColor: Colors.transparent,
                 indicatorColor: AppColors.ultraViolet,
                 selectedIndex: _selectedIndexPage,
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,

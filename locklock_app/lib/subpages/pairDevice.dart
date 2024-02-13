@@ -124,7 +124,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
             padding: EdgeInsets.only(top: 20, left: 20, right: 20),
             child: ClipRRect(
               borderRadius: SmoothBorderRadius(
-                cornerRadius: 35,
+                cornerRadius: 25,
                 cornerSmoothing: 0.8,
               ),
               child: Container(

@@ -4,6 +4,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:locklock_app/services/auth_service.dart';
 import '../appColors.dart';
+import 'package:gradient_borders/gradient_borders.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -140,17 +141,29 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       width: 170,
                       height: 70,
-                      decoration: BoxDecoration(
-                          gradient: SweepGradient(
-                        center: Alignment.bottomLeft,
-                        startAngle: 1,
-                        endAngle: 5,
-                        tileMode: TileMode.mirror,
-                        colors: [
-                          AppColors.robinEggBlue,
-                          AppColors.ultraViolet,
-                        ],
-                      )),
+                      decoration: const BoxDecoration(
+                          borderRadius: SmoothBorderRadius.only(
+                              topLeft: SmoothRadius(
+                                  cornerRadius: 25, cornerSmoothing: .8),
+                              topRight: SmoothRadius(
+                                  cornerRadius: 15, cornerSmoothing: .8),
+                              bottomLeft: SmoothRadius(
+                                  cornerRadius: 25, cornerSmoothing: .8),
+                              bottomRight: SmoothRadius(
+                                  cornerRadius: 15, cornerSmoothing: .8)),
+                          border: GradientBoxBorder(
+                              width: 4,
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                                colors: [
+                                  Color.fromRGBO(66, 134, 244, 1),
+                                  Color.fromRGBO(219, 68, 55, 1),
+                                  Color.fromRGBO(244, 180, 0, 1),
+                                  Color.fromRGBO(15, 157, 88, 1),
+                                  Color.fromRGBO(66, 134, 244, 1),
+                                ],
+                              ))),
                       child: ElevatedButton.icon(
                         icon: Icon(
                           CupertinoIcons.person_badge_plus_fill,
