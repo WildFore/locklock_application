@@ -157,12 +157,8 @@ class _LoginPageState extends State<LoginPage> {
                           size: 30,
                           color: AppColors.antiFlashWhite,
                         ),
-                        onPressed: () {
-                          try {
-                            AuthService().signInWithGoogle();
-                          } catch (e) {
-                            throw new Exception("Operation canceled");
-                          }
+                        onPressed: () async {
+                          AuthService().signInWithGoogle(context);
                         },
                         label: Text(
                           "Google",

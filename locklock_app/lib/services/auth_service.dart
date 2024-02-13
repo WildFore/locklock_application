@@ -1,22 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  getCurrentUser() async {
+    return await firebaseAuth.currentUser;
+  }
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+  signInWithGoogle(BuildContext context) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+    final GoogleSignInAccount? googleSignInAccount =
+        await GoogleSignIn().signIn();
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    final GoogleSignInAuthentication? googleSignInAuthentication =
+        await googleSignInAccount?.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication?.idToken,
+        accessToken: googleSignInAuthentication?.accessToken);
+
+    UserCredential result = await firebaseAuth.signInWithCredential(credential);
+
+    User? userDetails = result.user;
+    if (result != null) {
+      Map<String, dynamic> userInfoMap = {
+        "email": userDetails!.email,
+        "name": userDetails.displayName,
+        "profileImage": userDetails.photoURL,
+        "id": userDetails.uid
+      };
+    }
   }
 }
