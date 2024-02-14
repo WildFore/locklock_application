@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -40,6 +41,7 @@ class AuthService {
           await firebaseAuth.signInWithCredential(credential);
 
       User? userDetails = result.user;
+
       if (result != null) {
         Map<String, dynamic> userInfoMap = {
           "email": userDetails!.email,
@@ -49,6 +51,9 @@ class AuthService {
         };
         // Do something with userInfoMap
         print(userDetails.providerData);
+        DatabaseReference ref =
+            FirebaseDatabase.instance.ref("users-data/$userDetails.uid");
+        await ref.set({"door-status": false, "need-calibration": false});
       }
     } catch (e) {
       print("Error during Google Sign-In: $e");
