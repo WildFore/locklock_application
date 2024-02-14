@@ -57,10 +57,11 @@ class AuthService {
         lastUserId = userDetails.uid;
 
         User? firebaseUser = FirebaseAuth.instance.currentUser;
-        FirebaseFirestore.instance
-            .collection("users")
-            .doc("$lastUserId")
-            .set({'door-status': 'false', 'need-calibration': 'false'});
+        FirebaseFirestore.instance.collection("users").doc("$lastUserId").set({
+          'user-name': userDetails.displayName,
+          'door-status': 'false',
+          'need-calibration': 'false'
+        });
 
         print("Success fail");
       }
