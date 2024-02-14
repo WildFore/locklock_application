@@ -4,6 +4,7 @@ import 'package:locklock_app/appColors.dart';
 import 'package:locklock_app/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
+import 'package:locklock_app/services/auth_service.dart';
 
 class PairDevicePage extends StatefulWidget {
   const PairDevicePage({super.key});
@@ -165,8 +166,11 @@ class _PairDevicePageState extends State<PairDevicePage> {
                       buttonIsActive = false;
 
                       var url = Uri.http('192.168.4.1', '/wifi');
-                      var response = await http.post(url,
-                          body: {'ssid': ssid, 'password': password});
+                      var response = await http.post(url, body: {
+                        'ssid': ssid,
+                        'password': password,
+                        'user-id': AuthService.lastUserId
+                      });
                       print('Response status: ${response.statusCode}');
                       print('Response body: ${response.body}');
                       buttonIsActive = true;

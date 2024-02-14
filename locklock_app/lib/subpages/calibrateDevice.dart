@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:locklock_app/services/auth_service.dart';
 
 class CalibrateDevicePage extends StatefulWidget {
   const CalibrateDevicePage({super.key});
@@ -65,7 +70,11 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
                   onPressed: () {
-                    Navigator.of(context).popUntil((route) => route.isFirst);
+                    User? firebaseUser = FirebaseAuth.instance.currentUser;
+                    FirebaseFirestore.instance
+                        .collection("users")
+                        .doc("penis")
+                        .update({'need-calibration': 'true'});
                   },
                   label: Text(
                     "Start callibration",
