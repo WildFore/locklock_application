@@ -30,6 +30,8 @@ class AuthService {
         // Handle the case where either accessToken or idToken is null
         return;
       }
+      print(googleSignInAuthentication.accessToken);
+      print(googleSignInAuthentication.idToken);
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleSignInAuthentication.idToken,

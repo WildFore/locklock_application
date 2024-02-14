@@ -124,109 +124,111 @@ class _LoginPageState extends State<LoginPage> {
         ),
         Padding(
           padding: EdgeInsets.only(top: 20),
-          child: Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 20, top: 10),
-                child: ClipRRect(
-                    borderRadius: const SmoothBorderRadius.only(
-                        topLeft: SmoothRadius(
-                            cornerRadius: 25, cornerSmoothing: 0.8),
-                        topRight: SmoothRadius(
-                            cornerRadius: 15, cornerSmoothing: 0.8),
-                        bottomLeft: SmoothRadius(
-                            cornerRadius: 25, cornerSmoothing: 0.8),
-                        bottomRight: SmoothRadius(
-                            cornerRadius: 15, cornerSmoothing: 0.8)),
-                    child: Container(
-                      width: 170,
-                      height: 70,
-                      decoration: const BoxDecoration(
-                          borderRadius: SmoothBorderRadius.only(
-                              topLeft: SmoothRadius(
-                                  cornerRadius: 25, cornerSmoothing: .8),
-                              topRight: SmoothRadius(
-                                  cornerRadius: 15, cornerSmoothing: .8),
-                              bottomLeft: SmoothRadius(
-                                  cornerRadius: 25, cornerSmoothing: .8),
-                              bottomRight: SmoothRadius(
-                                  cornerRadius: 15, cornerSmoothing: .8)),
-                          border: GradientBoxBorder(
-                              width: 4,
-                              gradient: LinearGradient(
-                                begin: Alignment.bottomLeft,
-                                end: Alignment.topRight,
-                                colors: [
-                                  Color.fromRGBO(66, 134, 244, 1),
-                                  Color.fromRGBO(219, 68, 55, 1),
-                                  Color.fromRGBO(244, 180, 0, 1),
-                                  Color.fromRGBO(15, 157, 88, 1),
-                                  Color.fromRGBO(66, 134, 244, 1),
-                                ],
-                              ))),
-                      child: ElevatedButton.icon(
-                        icon: Icon(
-                          CupertinoIcons.person_badge_plus_fill,
-                          size: 30,
-                          color: AppColors.antiFlashWhite,
+          child: Center(
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 20, top: 10),
+                  child: ClipRRect(
+                      borderRadius: const SmoothBorderRadius.only(
+                          topLeft: SmoothRadius(
+                              cornerRadius: 25, cornerSmoothing: 0.8),
+                          topRight: SmoothRadius(
+                              cornerRadius: 15, cornerSmoothing: 0.8),
+                          bottomLeft: SmoothRadius(
+                              cornerRadius: 25, cornerSmoothing: 0.8),
+                          bottomRight: SmoothRadius(
+                              cornerRadius: 15, cornerSmoothing: 0.8)),
+                      child: Container(
+                        width: 170,
+                        height: 70,
+                        decoration: const BoxDecoration(
+                            borderRadius: SmoothBorderRadius.only(
+                                topLeft: SmoothRadius(
+                                    cornerRadius: 25, cornerSmoothing: .8),
+                                topRight: SmoothRadius(
+                                    cornerRadius: 15, cornerSmoothing: .8),
+                                bottomLeft: SmoothRadius(
+                                    cornerRadius: 25, cornerSmoothing: .8),
+                                bottomRight: SmoothRadius(
+                                    cornerRadius: 15, cornerSmoothing: .8)),
+                            border: GradientBoxBorder(
+                                width: 4,
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomLeft,
+                                  end: Alignment.topRight,
+                                  colors: [
+                                    Color.fromRGBO(66, 134, 244, 1),
+                                    Color.fromRGBO(219, 68, 55, 1),
+                                    Color.fromRGBO(244, 180, 0, 1),
+                                    Color.fromRGBO(15, 157, 88, 1),
+                                    Color.fromRGBO(66, 134, 244, 1),
+                                  ],
+                                ))),
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            CupertinoIcons.person_badge_plus_fill,
+                            size: 30,
+                            color: AppColors.antiFlashWhite,
+                          ),
+                          onPressed: () async {
+                            AuthService().signInWithGoogle(context);
+                          },
+                          label: Text(
+                            "Google",
+                            style: TextStyle(
+                                color: AppColors.antiFlashWhite,
+                                fontFamily: "ArchivoBlack",
+                                fontSize: 20),
+                          ),
+                          style: ButtonStyle(
+                              splashFactory: NoSplash.splashFactory,
+                              elevation: MaterialStateProperty.all(0),
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.transparent)),
                         ),
-                        onPressed: () async {
-                          AuthService().signInWithGoogle(context);
-                        },
-                        label: Text(
-                          "Google",
-                          style: TextStyle(
-                              color: AppColors.antiFlashWhite,
-                              fontFamily: "ArchivoBlack",
-                              fontSize: 20),
+                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10, top: 10),
+                  child: ClipRRect(
+                      borderRadius: const SmoothBorderRadius.only(
+                          topLeft: SmoothRadius(
+                              cornerRadius: 15, cornerSmoothing: 0.8),
+                          topRight: SmoothRadius(
+                              cornerRadius: 25, cornerSmoothing: 0.8),
+                          bottomLeft: SmoothRadius(
+                              cornerRadius: 15, cornerSmoothing: 0.8),
+                          bottomRight: SmoothRadius(
+                              cornerRadius: 25, cornerSmoothing: 0.8)),
+                      child: Container(
+                        width: 170,
+                        height: 70,
+                        color: AppColors.crayola,
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            CupertinoIcons.capslock_fill,
+                            color: AppColors.gray,
+                            size: 30,
+                          ),
+                          onPressed: () {},
+                          label: Text(
+                            "Login",
+                            style: TextStyle(
+                                color: AppColors.gray,
+                                fontFamily: "ArchivoBlack",
+                                fontSize: 20),
+                          ),
+                          style: ButtonStyle(
+                              splashFactory: NoSplash.splashFactory,
+                              elevation: MaterialStateProperty.all(0),
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.transparent)),
                         ),
-                        style: ButtonStyle(
-                            splashFactory: NoSplash.splashFactory,
-                            elevation: MaterialStateProperty.all(0),
-                            backgroundColor:
-                                MaterialStatePropertyAll(Colors.transparent)),
-                      ),
-                    )),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 10, top: 10),
-                child: ClipRRect(
-                    borderRadius: const SmoothBorderRadius.only(
-                        topLeft: SmoothRadius(
-                            cornerRadius: 15, cornerSmoothing: 0.8),
-                        topRight: SmoothRadius(
-                            cornerRadius: 25, cornerSmoothing: 0.8),
-                        bottomLeft: SmoothRadius(
-                            cornerRadius: 15, cornerSmoothing: 0.8),
-                        bottomRight: SmoothRadius(
-                            cornerRadius: 25, cornerSmoothing: 0.8)),
-                    child: Container(
-                      width: 170,
-                      height: 70,
-                      color: AppColors.crayola,
-                      child: ElevatedButton.icon(
-                        icon: Icon(
-                          CupertinoIcons.capslock_fill,
-                          color: AppColors.gray,
-                          size: 30,
-                        ),
-                        onPressed: () {},
-                        label: Text(
-                          "Login",
-                          style: TextStyle(
-                              color: AppColors.gray,
-                              fontFamily: "ArchivoBlack",
-                              fontSize: 20),
-                        ),
-                        style: ButtonStyle(
-                            splashFactory: NoSplash.splashFactory,
-                            elevation: MaterialStateProperty.all(0),
-                            backgroundColor:
-                                MaterialStatePropertyAll(Colors.transparent)),
-                      ),
-                    )),
-              )
-            ],
+                      )),
+                )
+              ],
+            ),
           ),
         )
       ]),
