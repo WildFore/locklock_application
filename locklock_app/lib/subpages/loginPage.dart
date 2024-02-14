@@ -3,6 +3,7 @@ import 'package:locklock_app/appColors.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:locklock_app/services/auth_service.dart';
+import 'package:locklock_app/subpages/currentUser.dart';
 import '../appColors.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
@@ -211,7 +212,12 @@ class _LoginPageState extends State<LoginPage> {
                             color: AppColors.gray,
                             size: 30,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return const CurrentUserPage();
+                            }));
+                          },
                           label: Text(
                             "Login",
                             style: TextStyle(

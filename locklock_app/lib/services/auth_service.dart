@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -14,6 +15,7 @@ class AuthService {
   }
 
   signInWithGoogle(BuildContext context) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -62,12 +64,20 @@ class AuthService {
           'door-status': 'false',
           'need-calibration': 'false'
         });
-
-        print("Success fail");
+        prefs.setString('user', lastUserId);
+        prefs.setString('img', userDetails.photoURL.toString());
       }
     } catch (e) {
       print("Error during Google Sign-In: $e");
       // Handle the error
     }
+  }
+
+  static overrideUserCalibrationStatus(bool status) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(prefs.getString('user'))
+        .update({'need-calibration': '$status'});
   }
 }

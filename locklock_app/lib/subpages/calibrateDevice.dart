@@ -16,6 +16,7 @@ class CalibrateDevicePage extends StatefulWidget {
 }
 
 class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
+  bool toggle = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +71,8 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
                   onPressed: () {
-                    User? firebaseUser = FirebaseAuth.instance.currentUser;
-                    FirebaseFirestore.instance
-                        .collection("users")
-                        .doc("penis")
-                        .update({'need-calibration': 'true'});
+                    toggle = !toggle;
+                    AuthService.overrideUserCalibrationStatus(toggle);
                   },
                   label: Text(
                     "Start callibration",
