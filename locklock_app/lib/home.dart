@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:locklock_app/cards.dart';
 import 'appColors.dart';
 import 'main.dart';
 
@@ -11,6 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //pages
+  List userCards = ['Locked', 'Unlocked'];
+
+  //testdata
+  List<String> lockedData = ["unlocked", "locked"];
+  List cardColors = [AppColors.crayola, AppColors.robinEggBlue];
+
   Color databoxColor = ColorLocked.setColor;
   bool stateOfDoor = true;
   String doorLocktstate = "Locked";
@@ -42,60 +50,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 330,
-        height: 450,
-        decoration: ShapeDecoration(
-          color: databoxColor,
-          shape: SmoothRectangleBorder(
-            borderRadius: SmoothBorderRadius(
-              cornerRadius: 35,
-              cornerSmoothing: 0.8,
-            ),
-          ),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Container(
-                width: 280,
-                height: 30,
-                child: ClipRRect(
-                  borderRadius: SmoothBorderRadius(
-                      cornerRadius: 15, cornerSmoothing: 0.8),
-                  child: ElevatedButton(
-                    style: const ButtonStyle(
-                      elevation: MaterialStatePropertyAll(0),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        stateOfDoor = !stateOfDoor;
-                        updateData();
-                      });
-                    },
-                    child: const Text("Switch"),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 310),
-                child: Text(
-                  doorLocktstate,
-                  style: const TextStyle(
-                    fontSize: 48,
-                    fontFamily: "ArchivoBlack",
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+    return PageView.builder(
+      itemCount: userCards.length,
+      itemBuilder: (context, index) {
+        return DeviceCard(
+          doorStatus: lockedData[index],
+          cardColor: cardColors[index],
+        );
+      },
     );
   }
 }
