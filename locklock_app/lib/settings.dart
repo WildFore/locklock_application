@@ -2,9 +2,12 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locklock_app/appColors.dart';
+import 'package:locklock_app/subpages/currentUser.dart';
 import 'package:locklock_app/subpages/loginPage.dart';
 import 'package:locklock_app/subpages/calibrateDevice.dart';
 import 'package:locklock_app/subpages/infoPage.dart';
+import 'package:locklock_app/subpages/welcomeUser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -220,11 +223,22 @@ class _SettingsPageState extends State<SettingsPage> {
                               CupertinoIcons.person_circle_fill,
                               size: 30,
                             ),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) {
-                                return const LoginPage();
-                              }));
+                            onPressed: () async {
+                              final SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              bool? loggedIn = prefs.getBool("loggedIn");
+                              print(loggedIn);
+                              if (loggedIn == true) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                  return const WelcomeUserPage();
+                                }));
+                              } else {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                  return const LoginPage();
+                                }));
+                              }
                             },
                             label: Text(
                               "User",

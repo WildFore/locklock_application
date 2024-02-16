@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:locklock_app/subpages/welcomeUser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
@@ -66,6 +67,13 @@ class AuthService {
         });
         prefs.setString('user', lastUserId);
         prefs.setString('img', userDetails.photoURL.toString());
+        prefs.setString('username', userDetails.displayName.toString());
+        prefs.setBool('loggedIn', true);
+
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return const WelcomeUserPage();
+        }));
       }
     } catch (e) {
       print("Error during Google Sign-In: $e");
@@ -79,5 +87,11 @@ class AuthService {
         .collection("users")
         .doc(prefs.getString('user'))
         .update({'need-calibration': '$status'});
+  }
+
+  static logOut() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    FirebaseAuth.instance.signOut();
+    prefs.setBool('loggedIn', false);
   }
 }
