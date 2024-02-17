@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:locklock_app/cards.dart';
@@ -13,14 +15,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //pages
-  List userCards = ['Locked', 'Unlocked'];
+  List userCards = ['Locked'];
 
   //testdata
-  List<String> lockedData = ["unlocked", "locked"];
+  List<String> lockedData = [
+    "unlocked",
+  ];
   List cardColors = [AppColors.crayola, AppColors.robinEggBlue];
 
   Color databoxColor = ColorLocked.setColor;
-  bool stateOfDoor = true;
+  bool stateOfDoor = false;
   String doorLocktstate = "Locked";
 
   void updateData() {
@@ -48,14 +52,35 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  final Future<dynamic> _fApp = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
+    DatabaseReference reference =
+        FirebaseDatabase.instance.ref("user1/doorState");
+    FutureBuilder<dynamic>(
+      future: _fApp,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          reference.onValue.listen((event) {
+            stateOfDoor = event.snapshot.value as bool;
+          });
+          return DeviceCard(
+              doorStatus: _newLockedData(),
+              cardColor: _calculateUpdatedColor());
+        } else if (snapshot.hasError) {
+          throw new Exception("connection failed");
+        } else {
+          return DeviceCard(doorStatus: "error", cardColor: AppColors.crayola);
+        }
+      },
+    );
     return PageView.builder(
       itemCount: userCards.length,
       itemBuilder: (context, index) {
         return DeviceCard(
-          doorStatus: lockedData[index],
-          cardColor: cardColors[index],
+          doorStatus: _newLockedData(),
+          cardColor: _calculateUpdatedColor(),
         );
       },
     );
