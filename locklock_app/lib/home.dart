@@ -3,18 +3,15 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:locklock_app/notificationCard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'appColors.dart';
 import 'main.dart';
 
 class ListScroll {
   static ScrollController controller = ScrollController();
-  static void scrollToItem(int index) {
-    // Use animateTo for smooth scrolling
-    controller.animateTo(
-      index * 50.0, // Adjust the value based on your item size
-      duration: Duration(seconds: 1),
-      curve: Curves.easeInOut,
-    );
+
+  getUserData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
   }
 }
 
@@ -46,10 +43,8 @@ class _HomePageState extends State<HomePage> {
             doorStatusArray.add(isLocked ? "Locked" : "Unlocked");
             notiCardColor
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
-            timeStamps.add(DateTime.now().hour.toString() +
-                ":" +
-                DateTime.now().minute.toString());
-            timeStampPaddings.add(isLocked ? 120 : 90);
+            timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
+            timeStampPaddings.add(isLocked ? 140 : 110);
             ListScroll.controller.jumpTo(doorStatusArray.length * 45);
           });
         }
@@ -57,21 +52,31 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  String getMinutes() {
+    if (DateTime.now().minute as int < 10) {
+      return "0" + DateTime.now().minute.toString();
+    } else
+      return DateTime.now().minute.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: ListScroll.controller,
-      shrinkWrap: true,
-      reverse: true,
-      itemCount: doorStatusArray.length,
-      itemBuilder: (context, index) {
-        return NotificationCard(
-          doorStatus: doorStatusArray[index],
-          cardColor: notiCardColor[index],
-          timeStamp: timeStamps[index],
-          timeStampPadding: timeStampPaddings[index],
-        );
-      },
+    return Padding(
+      padding: EdgeInsets.only(left: 10, right: 10),
+      child: ListView.builder(
+        controller: ListScroll.controller,
+        shrinkWrap: true,
+        reverse: true,
+        itemCount: doorStatusArray.length,
+        itemBuilder: (context, index) {
+          return NotificationCard(
+            doorStatus: doorStatusArray[index],
+            cardColor: notiCardColor[index],
+            timeStamp: timeStamps[index],
+            timeStampPadding: timeStampPaddings[index],
+          );
+        },
+      ),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:locklock_app/addNewDevice.dart';
 import 'package:locklock_app/firebase_options.dart';
 import 'package:locklock_app/home.dart';
 import 'package:locklock_app/settings.dart';
+import 'package:locklock_app/subpages/pairDevice.dart';
 import 'appColors.dart';
 
 Future<void> main() async {
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
   int _selectedIndexPage = 0;
   List pages = const [HomePage(), SettingsPage()];
   String appLanding = "Home";
+  bool visibility = true;
 
   //colors
 
@@ -48,6 +50,27 @@ class _HomeState extends State<Home> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+            actions: [
+              Builder(
+                builder: (context) {
+                  return Visibility(
+                    visible: visibility,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 100, right: 20),
+                      child: IconButton(
+                        iconSize: 30,
+                        icon: Icon(CupertinoIcons.add_circled_solid),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PairDevicePage(),
+                          ));
+                        },
+                      ),
+                    ),
+                  );
+                },
+              )
+            ],
             centerTitle: false,
             toolbarHeight: 140,
             elevation: 0,
@@ -66,7 +89,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 50),
           child: Container(
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 35),
+              padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 35),
               child: pages[_selectedIndexPage],
             ),
           ),
@@ -113,8 +136,10 @@ class _HomeState extends State<Home> {
                     switch (index) {
                       case 0:
                         appLanding = "Home";
+                        visibility = true;
                       case 1:
                         appLanding = "Settings";
+                        visibility = false;
                     }
                   });
                 }),
