@@ -2,9 +2,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
-import 'package:locklock_app/cards.dart';
+import 'package:locklock_app/notificationCard.dart';
 import 'appColors.dart';
 import 'main.dart';
+
+class ListScroll {
+  static ScrollController controller = ScrollController();
+  static void scrollToItem(int index) {
+    // Use animateTo for smooth scrolling
+    controller.animateTo(
+      index * 50.0, // Adjust the value based on your item size
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,73 +26,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //pages
-  List userCards = ['Locked'];
-
-  //testdata
-  List<String> lockedData = [
-    "unlocked",
-  ];
-  List cardColors = [AppColors.crayola, AppColors.robinEggBlue];
-
-  Color databoxColor = ColorLocked.setColor;
-  bool stateOfDoor = false;
-  String doorLocktstate = "Locked";
-
-  void updateData() {
-    setState(() {
-      databoxColor = _calculateUpdatedColor();
-      doorLocktstate = _newLockedData();
+  List<String> doorStatusArray = [];
+  List<Color> notiCardColor = [];
+  List<String> timeStamps = [];
+  List<double> timeStampPaddings = [];
+  @override
+  void initState() {
+    super.initState();
+    // Initialize Firebase and reference to the database
+    Firebase.initializeApp().then((_) {
+      DatabaseReference ref =
+          FirebaseDatabase.instance.ref().child("user1/doorStatus");
+      // Listen to changes in real-time
+      ref.onValue.listen((event) {
+        if (event.snapshot.value != null) {
+          // Update the state and rebuild the widget
+          setState(() {
+            bool isLocked = event.snapshot.value as bool;
+            doorStatusArray.add(isLocked ? "Locked" : "Unlocked");
+            notiCardColor
+                .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
+            timeStamps.add(DateTime.now().hour.toString() +
+                ":" +
+                DateTime.now().minute.toString());
+            timeStampPaddings.add(isLocked ? 120 : 90);
+            ListScroll.controller.jumpTo(doorStatusArray.length * 45);
+          });
+        }
+      });
     });
   }
 
-  void updateTextDoorState() {}
-
-  Color _calculateUpdatedColor() {
-    if (stateOfDoor) {
-      return AppColors.robinEggBlue;
-    } else {
-      return AppColors.crayola;
-    }
-  }
-
-  String _newLockedData() {
-    if (stateOfDoor) {
-      return "Locked";
-    } else {
-      return "Unlocked";
-    }
-  }
-
-  final Future<dynamic> _fApp = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
-    DatabaseReference reference =
-        FirebaseDatabase.instance.ref("user1/doorState");
-    FutureBuilder<dynamic>(
-      future: _fApp,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          reference.onValue.listen((event) {
-            stateOfDoor = event.snapshot.value as bool;
-          });
-          return DeviceCard(
-              doorStatus: _newLockedData(),
-              cardColor: _calculateUpdatedColor());
-        } else if (snapshot.hasError) {
-          throw new Exception("connection failed");
-        } else {
-          return DeviceCard(doorStatus: "error", cardColor: AppColors.crayola);
-        }
-      },
-    );
-    return PageView.builder(
-      itemCount: userCards.length,
+    return ListView.builder(
+      controller: ListScroll.controller,
+      shrinkWrap: true,
+      reverse: true,
+      itemCount: doorStatusArray.length,
       itemBuilder: (context, index) {
-        return DeviceCard(
-          doorStatus: _newLockedData(),
-          cardColor: _calculateUpdatedColor(),
+        return NotificationCard(
+          doorStatus: doorStatusArray[index],
+          cardColor: notiCardColor[index],
+          timeStamp: timeStamps[index],
+          timeStampPadding: timeStampPaddings[index],
         );
       },
     );

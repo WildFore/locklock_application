@@ -62,7 +62,15 @@ class _HomeState extends State<Home> {
                   TextStyle(fontSize: 32, color: AppColors.antiFlashWhite),
               fontWeight: FontWeight.w800,
             )),
-        body: pages[_selectedIndexPage],
+        body: Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 50),
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 35),
+              child: pages[_selectedIndexPage],
+            ),
+          ),
+        ),
         backgroundColor: const Color.fromARGB(255, 30, 30, 30),
         bottomNavigationBar: Container(
           height: 100,
