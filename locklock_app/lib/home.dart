@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // Initialize Firebase and reference to the database
     Firebase.initializeApp().then((_) {
-      DatabaseReference ref =
+      DatabaseReference refDoor =
           FirebaseDatabase.instance.ref().child("user1/doorStatus");
       // Listen to changes in real-time
-      ref.onValue.listen((event) {
+      refDoor.onValue.listen((event) {
         if (event.snapshot.value != null) {
           // Update the state and rebuild the widget
           setState(() {

@@ -79,14 +79,12 @@ class AuthService {
       print("Error during Google Sign-In: $e");
       // Handle the error
     }
+    InitializeUserData();
   }
 
-  static overrideUserCalibrationStatus(bool status) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(prefs.getString('user'))
-        .update({'need-calibration': '$status'});
+  static InitializeUserData() async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref("$lastUserId");
+    await ref.set({'needCalibrationOpen': 0, "doorStatus": false});
   }
 
   static logOut() async {

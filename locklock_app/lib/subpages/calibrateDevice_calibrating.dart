@@ -26,8 +26,9 @@ class _CalibrateDevicePageState extends State<CalibrateDeviceCalibratingPage> {
   @override
   void initState() {
     super.initState();
+    String lastUser = AuthService.lastUserId;
     DatabaseReference ref =
-        FirebaseDatabase.instance.ref().child("user1/needCalibrationOpen");
+        FirebaseDatabase.instance.ref().child("$lastUser/needCalibrationOpen");
     ref.onValue.listen((event) {
       if (event.snapshot.value != 0) {
       } else {

@@ -77,9 +77,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
                   onPressed: () async {
-                    DatabaseReference ref =
-                        FirebaseDatabase.instance.ref().child("user1");
-                    ref.update({'needCalibrationOpen': 1});
+                    AuthService.InitializeUserData();
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (BuildContext context) {
                       return const CalibrateDeviceCalibratingPage();
