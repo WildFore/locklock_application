@@ -23,10 +23,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> doorStatusArray = [];
-  List<Color> notiCardColor = [];
-  List<String> timeStamps = [];
-  List<double> timeStampPaddings = [];
+  List<String> doorStatusArray = ['', '', '', '', ''];
+  List<Color> notiCardColor = [
+    AppColors.lightGray,
+    AppColors.lightGray,
+    AppColors.lightGray,
+    AppColors.lightGray,
+    AppColors.lightGray
+  ];
+  List<String> timeStamps = ['', '', '', '', ''];
+  List<double> timeStampPaddings = [120, 120, 120, 120, 120];
   @override
   void initState() {
     super.initState();
@@ -46,6 +52,9 @@ class _HomePageState extends State<HomePage> {
             timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
             timeStampPaddings.add(isLocked ? 140 : 110);
             ListScroll.controller.jumpTo(doorStatusArray.length * 45);
+            if (doorStatusArray.length > 5) {
+              doorStatusArray.remove(1);
+            }
           });
         }
       });
@@ -63,19 +72,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10),
-      child: ListView.builder(
-        controller: ListScroll.controller,
-        shrinkWrap: true,
-        reverse: true,
-        itemCount: doorStatusArray.length,
-        itemBuilder: (context, index) {
-          return NotificationCard(
-            doorStatus: doorStatusArray[index],
-            cardColor: notiCardColor[index],
-            timeStamp: timeStamps[index],
-            timeStampPadding: timeStampPaddings[index],
-          );
-        },
+      child: Container(
+        height: 400,
+        width: 330,
+        child: ListView.builder(
+          controller: ListScroll.controller,
+          shrinkWrap: true,
+          reverse: true,
+          itemCount: doorStatusArray.length,
+          itemBuilder: (context, index) {
+            return NotificationCard(
+              doorStatus: doorStatusArray[index],
+              cardColor: notiCardColor[index],
+              timeStamp: timeStamps[index],
+              timeStampPadding: timeStampPaddings[index],
+            );
+          },
+        ),
       ),
     );
   }
