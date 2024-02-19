@@ -51,9 +51,12 @@ class _HomePageState extends State<HomePage> {
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
             timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
             timeStampPaddings.add(isLocked ? 140 : 110);
-            ListScroll.controller.jumpTo(doorStatusArray.length * 45);
+            //ListScroll.controller.jumpTo(doorStatusArray.length * 45);
             if (doorStatusArray.length > 5) {
-              doorStatusArray.remove(1);
+              doorStatusArray.removeAt(0);
+              notiCardColor.removeAt(0);
+              timeStamps.removeAt(0);
+              timeStampPaddings.removeAt(0);
             }
           });
         }

@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
               "Montserrat",
               textStyle:
                   TextStyle(fontSize: 32, color: AppColors.antiFlashWhite),
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
             )),
         body: Padding(
           padding: EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 50),

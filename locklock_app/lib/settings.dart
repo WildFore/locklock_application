@@ -1,6 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:locklock_app/subpages/currentUser.dart';
 import 'package:locklock_app/subpages/loginPage.dart';
@@ -72,13 +73,16 @@ class _SettingsPageState extends State<SettingsPage> {
                           return const InfoPage();
                         }));
                       },
-                      label: const Align(
+                      label: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Info",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "ArchivoBlack",
+                            style: GoogleFonts.getFont(
+                              "Montserrat",
+                              textStyle: TextStyle(
+                                  fontSize: 20,
+                                  color: AppColors.antiFlashWhite),
+                              fontWeight: FontWeight.w700,
                             ),
                           )),
                     ),
@@ -125,13 +129,16 @@ class _SettingsPageState extends State<SettingsPage> {
                             return const InfoPage();
                           }));
                         },
-                        label: const Align(
+                        label: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               "Faq",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "ArchivoBlack",
+                              style: GoogleFonts.getFont(
+                                "Montserrat",
+                                textStyle: TextStyle(
+                                    fontSize: 20,
+                                    color: AppColors.antiFlashWhite),
+                                fontWeight: FontWeight.w700,
                               ),
                             )),
                       ),
@@ -182,13 +189,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       },
                       label: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Calibrate device",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "ArchivoBlack",
-                                color: AppColors.gray),
-                          )),
+                          child: Text("Calibrate device",
+                              style: GoogleFonts.getFont(
+                                "Montserrat",
+                                textStyle: TextStyle(
+                                    fontSize: 22, color: AppColors.gray),
+                                fontWeight: FontWeight.w700,
+                              ))),
                     ),
                   ),
                 ),
@@ -240,13 +247,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                 }));
                               }
                             },
-                            label: Text(
-                              "User",
-                              style: TextStyle(
-                                  color: AppColors.antiFlashWhite,
-                                  fontFamily: "ArchivoBlack",
-                                  fontSize: 20),
-                            ),
+                            label: Text("User",
+                                style: GoogleFonts.getFont(
+                                  "Montserrat",
+                                  textStyle: TextStyle(
+                                      fontSize: 20,
+                                      color: AppColors.antiFlashWhite),
+                                  fontWeight: FontWeight.w700,
+                                )),
                             style: ButtonStyle(
                                 splashFactory: NoSplash.splashFactory,
                                 elevation: MaterialStateProperty.all(0),

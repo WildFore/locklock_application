@@ -75,7 +75,7 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                                   begin: Alignment.bottomLeft,
                                   end: Alignment.topRight,
                                   colors: [
-                                    AppColors.crayola,
+                                    AppColors.robinEggBlue,
                                     AppColors.ultraViolet,
                                   ],
                                 )),
@@ -113,7 +113,7 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       if (snapshot.hasData) {
-                        return Text('👋 Hello, ' + snapshot.data! + "! ",
+                        return Text('Hello, ' + snapshot.data! + "! :D",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.getFont(
                               "Montserrat",
@@ -123,7 +123,7 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                               fontWeight: FontWeight.bold,
                             ));
                       } else {
-                        return Text('👋 Hello, User!',
+                        return Text('Hello, User! :D',
                             style: TextStyle(
                               fontSize: 24,
                               color: AppColors.antiFlashWhite,
@@ -154,20 +154,24 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                   height: 80,
                   color: AppColors.crayola,
                   child: ElevatedButton.icon(
-                    icon: const Icon(
+                    icon: Icon(
                       CupertinoIcons.person_badge_minus_fill,
+                      color: AppColors.gray,
                       size: 30,
                     ),
                     onPressed: () async {
                       AuthService.logOut();
                       Navigator.of(context).popUntil((route) => route.isFirst);
                     },
-                    label: Text("Log out",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.antiFlashWhite,
-                          fontWeight: FontWeight.w900,
-                        )),
+                    label: Text(
+                      "Log out",
+                      style: GoogleFonts.getFont(
+                        "Montserrat",
+                        textStyle:
+                            TextStyle(fontSize: 20, color: AppColors.gray),
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                     style: ButtonStyle(
                         splashFactory: NoSplash.splashFactory,
                         elevation: MaterialStateProperty.all(0),

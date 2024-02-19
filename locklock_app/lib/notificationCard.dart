@@ -37,7 +37,7 @@ class _DeviceCardState extends State<NotificationCard> {
             borderRadius: const SmoothBorderRadius.all(
                 SmoothRadius(cornerRadius: 25, cornerSmoothing: 0.8)),
             border: const GradientBoxBorder(
-                width: 1.8,
+                width: 1.5,
                 gradient: LinearGradient(colors: [
                   Color.fromARGB(112, 255, 255, 255),
                   Colors.transparent,
@@ -55,7 +55,7 @@ class _DeviceCardState extends State<NotificationCard> {
                     style: GoogleFonts.getFont(
                       "Montserrat",
                       textStyle: TextStyle(fontSize: 24, color: AppColors.gray),
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     )),
               ),
               Padding(
@@ -65,7 +65,7 @@ class _DeviceCardState extends State<NotificationCard> {
                     style: GoogleFonts.getFont(
                       "Montserrat",
                       textStyle: TextStyle(fontSize: 24, color: AppColors.gray),
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     )),
               ),
             ]),

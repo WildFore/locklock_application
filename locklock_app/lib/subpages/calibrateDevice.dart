@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:locklock_app/appColors.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,15 +46,16 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
             )),
           ),
           Padding(
-              padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+              padding: const EdgeInsets.only(top: 80, left: 45, right: 45),
               child: Text(
                   textAlign: TextAlign.center,
                   "Let's calibrate your device, if something went wrong.",
-                  style: TextStyle(
-                      fontFamily: "ArchivoBlack",
-                      fontSize: 26,
-                      fontWeight: FontWeight.w100,
-                      color: AppColors.antiFlashWhite))),
+                  style: GoogleFonts.getFont(
+                    "Montserrat",
+                    textStyle: TextStyle(
+                        fontSize: 24, color: AppColors.antiFlashWhite),
+                    fontWeight: FontWeight.w700,
+                  ))),
           Padding(
             padding: EdgeInsets.only(top: 100, left: 20, right: 20),
             child: ClipRRect(
@@ -62,7 +64,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                 cornerSmoothing: 0.8,
               ),
               child: Container(
-                width: 260,
+                width: 300,
                 height: 70,
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
@@ -74,14 +76,13 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                     toggle = !toggle;
                     AuthService.overrideUserCalibrationStatus(toggle);
                   },
-                  label: Text(
-                    "Start callibration",
-                    style: TextStyle(
-                      fontFamily: "ArchivoBlack",
-                      fontSize: 20,
-                      color: AppColors.gray,
-                    ),
-                  ),
+                  label: Text("Start callibration",
+                      style: GoogleFonts.getFont(
+                        "Montserrat",
+                        textStyle:
+                            TextStyle(fontSize: 20, color: AppColors.gray),
+                        fontWeight: FontWeight.w700,
+                      )),
                   icon: Icon(
                     CupertinoIcons.arrow_right_circle_fill,
                     color: AppColors.gray,
