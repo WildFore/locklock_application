@@ -39,9 +39,9 @@ class _DeviceCardState extends State<NotificationCard> {
             border: const GradientBoxBorder(
                 width: 1.5,
                 gradient: LinearGradient(colors: [
-                  Color.fromARGB(112, 255, 255, 255),
+                  Color.fromARGB(0, 0, 0, 0),
                   Colors.transparent,
-                  Color.fromARGB(94, 0, 0, 0)
+                  Color.fromARGB(0, 0, 0, 0)
                 ], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
         width: 330,
         height: 70,

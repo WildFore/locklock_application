@@ -10,19 +10,15 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:locklock_app/services/auth_service.dart';
 import 'package:locklock_app/subpages/calibrateDevice_calibrating.dart';
 
-class CalibrateDevicePage extends StatefulWidget {
-  const CalibrateDevicePage({super.key});
+class CalibrateDeviceDonePage extends StatefulWidget {
+  const CalibrateDeviceDonePage({super.key});
 
   @override
-  State<CalibrateDevicePage> createState() => _CalibrateDevicePageState();
+  State<CalibrateDeviceDonePage> createState() => _CalibrateDevicePageState();
 }
 
-class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
+class _CalibrateDevicePageState extends State<CalibrateDeviceDonePage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.gray,
@@ -44,7 +40,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
             padding: EdgeInsets.only(top: 80),
             child: Center(
                 child: Icon(
-              CupertinoIcons.wifi,
+              CupertinoIcons.smiley,
               size: 100,
               color: AppColors.lightGray,
             )),
@@ -53,7 +49,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
               padding: const EdgeInsets.only(top: 80, left: 45, right: 45),
               child: Text(
                   textAlign: TextAlign.center,
-                  "Let's calibrate your device, if something went wrong.",
+                  "Calibration succeeded, now lets back to home page!",
                   style: GoogleFonts.getFont(
                     "Montserrat",
                     textStyle: TextStyle(
@@ -68,7 +64,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                 cornerSmoothing: 0.8,
               ),
               child: Container(
-                width: 300,
+                width: 220,
                 height: 70,
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
@@ -76,16 +72,10 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                     backgroundColor:
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
-                  onPressed: () async {
-                    DatabaseReference ref =
-                        FirebaseDatabase.instance.ref().child("user1");
-                    ref.update({'needCalibrationOpen': 1});
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return const CalibrateDeviceCalibratingPage();
-                    }));
+                  onPressed: () {
+                    Navigator.of(context).popUntil((route) => route.isFirst);
                   },
-                  label: Text("Start callibration",
+                  label: Text("Back home",
                       style: GoogleFonts.getFont(
                         "Montserrat",
                         textStyle:
