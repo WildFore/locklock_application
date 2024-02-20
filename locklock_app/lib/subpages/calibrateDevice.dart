@@ -23,6 +23,7 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
     super.initState();
   }
 
+  String? lastUserData = AuthService.userIdStream;
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.gray,
@@ -77,7 +78,9 @@ class _CalibrateDevicePageState extends State<CalibrateDevicePage> {
                         MaterialStatePropertyAll(AppColors.crayola),
                   ),
                   onPressed: () async {
-                    AuthService.InitializeUserData();
+                    DatabaseReference refDoor =
+                        FirebaseDatabase.instance.ref().child("$lastUserData");
+                    await refDoor.update({'needCalibrationOpen': 1});
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (BuildContext context) {
                       return const CalibrateDeviceCalibratingPage();

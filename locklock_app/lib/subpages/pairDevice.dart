@@ -169,7 +169,7 @@ class _PairDevicePageState extends State<PairDevicePage> {
                       var response = await http.post(url, body: {
                         'ssid': ssid,
                         'password': password,
-                        'user-id': AuthService.lastUserId
+                        'user-id': AuthService.userIdStream
                       });
                       print('Response status: ${response.statusCode}');
                       print('Response body: ${response.body}');

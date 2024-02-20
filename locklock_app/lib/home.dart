@@ -3,16 +3,13 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:locklock_app/notificationCard.dart';
+import 'package:locklock_app/services/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'appColors.dart';
 import 'main.dart';
 
 class ListScroll {
   static ScrollController controller = ScrollController();
-
-  getUserData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-  }
 }
 
 class HomePage extends StatefulWidget {
@@ -23,6 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static String? lastUser;
   List<String> doorStatusArray = ['', '', '', '', ''];
   List<Color> notiCardColor = [
     AppColors.lightGray,
@@ -36,10 +34,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    AuthService.getUserTokenAync();
+    String? lastUserData = AuthService.userIdStream;
+    print(lastUserData);
     // Initialize Firebase and reference to the database
     Firebase.initializeApp().then((_) {
       DatabaseReference refDoor =
-          FirebaseDatabase.instance.ref().child("user1/doorStatus");
+          FirebaseDatabase.instance.ref().child("$lastUserData/doorStatus");
       // Listen to changes in real-time
       refDoor.onValue.listen((event) {
         if (event.snapshot.value != null) {

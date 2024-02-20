@@ -10,9 +10,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   static String lastUserId = "";
+  static String? userIdStream;
 
   getCurrentUser() async {
     return await firebaseAuth.currentUser;
+  }
+
+  static getUserTokenAync() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    userIdStream = prefs.getString('user');
   }
 
   signInWithGoogle(BuildContext context) async {
@@ -79,6 +85,7 @@ class AuthService {
       print("Error during Google Sign-In: $e");
       // Handle the error
     }
+    getUserTokenAync();
     InitializeUserData();
   }
 

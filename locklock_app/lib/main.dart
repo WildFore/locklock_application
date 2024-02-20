@@ -6,12 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:locklock_app/addNewDevice.dart';
 import 'package:locklock_app/firebase_options.dart';
 import 'package:locklock_app/home.dart';
+import 'package:locklock_app/services/auth_service.dart';
 import 'package:locklock_app/settings.dart';
 import 'package:locklock_app/subpages/pairDevice.dart';
 import 'appColors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  AuthService.getUserTokenAync();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Home());
 }

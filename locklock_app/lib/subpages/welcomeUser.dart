@@ -55,7 +55,7 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
               fontWeight: FontWeight.w500),
         ),
         body: Column(children: [
-          Padding(padding: EdgeInsets.only(top: 60)),
+          Padding(padding: EdgeInsets.only(top: 10)),
           Padding(
             padding: EdgeInsets.only(top: 40),
             child: Center(
@@ -65,8 +65,8 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                     if (snapshot.connectionState == ConnectionState.done) {
                       if (snapshot.hasData) {
                         return Container(
-                          width: 130,
-                          height: 130,
+                          width: 120,
+                          height: 120,
                           decoration: BoxDecoration(
                             border: GradientBoxBorder(
                                 width: 4,
@@ -82,9 +82,17 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                             borderRadius: const SmoothBorderRadius.all(
                                 SmoothRadius(
                                     cornerRadius: 100, cornerSmoothing: 0)),
-                            image: DecorationImage(
-                              image: NetworkImage(snapshot.data!),
-                              fit: BoxFit.cover,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: ClipRRect(
+                              borderRadius: const SmoothBorderRadius.all(
+                                  SmoothRadius(
+                                      cornerRadius: 100, cornerSmoothing: 0)),
+                              child: Image(
+                                image: NetworkImage(snapshot.data!),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         );
@@ -134,6 +142,33 @@ class _CalibrateDevicePageState extends State<WelcomeUserPage> {
                       return const CircularProgressIndicator();
                     }
                   }),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 40),
+            child: ClipRRect(
+              borderRadius: SmoothBorderRadius.all(
+                  SmoothRadius(cornerRadius: 10, cornerSmoothing: .6)),
+              child: Container(
+                width: 310,
+                height: 180,
+                color: AppColors.lightGray,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10, left: 10),
+                  child: Text(
+                    textAlign: TextAlign.left,
+                    "This is page of your account, the information about your door is linked to your accounts.\n" +
+                        "\n" +
+                        "Change your account, to access other devices that are linked.",
+                    style: GoogleFonts.getFont(
+                      "Cousine",
+                      textStyle: TextStyle(
+                          fontSize: 18, color: AppColors.antiFlashWhite),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
           Center(

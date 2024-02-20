@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:locklock_app/home.dart';
 import 'package:locklock_app/services/auth_service.dart';
 import 'package:locklock_app/settings.dart';
 import 'package:locklock_app/subpages/calibrateDevice.dart';
@@ -23,10 +24,11 @@ class CalibrateDeviceCalibratingPage extends StatefulWidget {
 }
 
 class _CalibrateDevicePageState extends State<CalibrateDeviceCalibratingPage> {
+  String? lastUser;
   @override
   void initState() {
     super.initState();
-    String lastUser = AuthService.lastUserId;
+    lastUser = AuthService.userIdStream;
     DatabaseReference ref =
         FirebaseDatabase.instance.ref().child("$lastUser/needCalibrationOpen");
     ref.onValue.listen((event) {
@@ -48,6 +50,15 @@ class _CalibrateDevicePageState extends State<CalibrateDeviceCalibratingPage> {
     return Scaffold(
       backgroundColor: AppColors.gray,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.chevron_back),
+          onPressed: () async {
+            DatabaseReference refDoor =
+                FirebaseDatabase.instance.ref().child("$lastUser");
+            await refDoor.update({'needCalibrationOpen': 0});
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          },
+        ),
         toolbarHeight: 70,
         elevation: 0,
         backgroundColor: Color.fromARGB(255, 30, 30, 30),
