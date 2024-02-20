@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           // Update the state and rebuild the widget
           setState(() {
             bool isLocked = event.snapshot.value as bool;
-            doorStatusArray.add(isLocked ? "Locked" : "Unlocked");
+            doorStatusArray.add(isLocked ? "Unlocked" : "Locked");
             notiCardColor
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
             timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
