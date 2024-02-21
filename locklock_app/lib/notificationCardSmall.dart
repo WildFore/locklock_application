@@ -16,15 +16,11 @@ class NotificationCard extends StatefulWidget {
   Color cardColor;
   String timeStamp;
   double timeStampPadding;
-  double width;
-  double height;
   NotificationCard(
       {required this.doorStatus,
       required this.cardColor,
       required this.timeStamp,
-      required this.timeStampPadding,
-      required this.width,
-      required this.height});
+      required this.timeStampPadding});
 
   @override
   State<NotificationCard> createState() => _DeviceCardState();
@@ -47,8 +43,8 @@ class _DeviceCardState extends State<NotificationCard> {
                   Colors.transparent,
                   Color.fromARGB(0, 0, 0, 0)
                 ], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
-        width: widget.width,
-        height: widget.height,
+        width: 330,
+        height: 70,
         child: Center(
           child: Padding(
             padding: EdgeInsets.only(top: 0),

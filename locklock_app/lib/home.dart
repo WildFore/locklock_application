@@ -21,16 +21,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static String? lastUser;
-  List<String> doorStatusArray = ['', '', '', '', ''];
-  List<Color> notiCardColor = [
-    AppColors.lightGray,
-    AppColors.lightGray,
-    AppColors.lightGray,
-    AppColors.lightGray,
-    AppColors.lightGray
-  ];
-  List<String> timeStamps = ['', '', '', '', ''];
-  List<double> timeStampPaddings = [120, 120, 120, 120, 120];
+  List<String> doorStatusArray = ['', ''];
+  List<Color> notiCardColor = [AppColors.lightGray, AppColors.lightGray];
+  List<String> timeStamps = ['', ''];
+  List<double> timeStampPaddings = [120, 120];
+  List<double> widths = [200, 330];
+  List<double> heights = [70, 200];
   @override
   void initState() {
     super.initState();
@@ -53,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
             timeStampPaddings.add(isLocked ? 110 : 140);
             //ListScroll.controller.jumpTo(doorStatusArray.length * 45);
-            if (doorStatusArray.length > 5) {
+            if (doorStatusArray.length > 2) {
               doorStatusArray.removeAt(0);
               notiCardColor.removeAt(0);
               timeStamps.removeAt(0);
@@ -90,6 +86,8 @@ class _HomePageState extends State<HomePage> {
               cardColor: notiCardColor[index],
               timeStamp: timeStamps[index],
               timeStampPadding: timeStampPaddings[index],
+              width: widths[index],
+              height: heights[index],
             );
           },
         ),
