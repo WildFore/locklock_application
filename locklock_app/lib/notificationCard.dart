@@ -47,12 +47,7 @@ class _DeviceCardState extends State<NotificationCard> {
           top: 10,
           bottom: 0),
       child: GestureDetector(
-        onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (BuildContext context) {
-            return const HistoryPage();
-          }));
-        },
+        onTap: () {},
         child: Container(
           decoration: BoxDecoration(
               color: widget.cardColor,
