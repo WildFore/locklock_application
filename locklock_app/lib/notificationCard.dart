@@ -8,6 +8,7 @@ import 'package:locklock_app/addNewDevice.dart';
 import 'package:locklock_app/firebase_options.dart';
 import 'package:locklock_app/home.dart';
 import 'package:locklock_app/settings.dart';
+import 'package:locklock_app/subpages/history.dart';
 import 'appColors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,16 +16,22 @@ class NotificationCard extends StatefulWidget {
   String doorStatus;
   Color cardColor;
   String timeStamp;
-  double timeStampPadding;
   double width;
   double height;
+  double paddingLeft;
+  double paddingRight;
+  double topPadding;
+  double fontSize;
   NotificationCard(
       {required this.doorStatus,
       required this.cardColor,
       required this.timeStamp,
-      required this.timeStampPadding,
       required this.width,
-      required this.height});
+      required this.height,
+      required this.paddingLeft,
+      required this.paddingRight,
+      required this.topPadding,
+      required this.fontSize});
 
   @override
   State<NotificationCard> createState() => _DeviceCardState();
@@ -34,45 +41,60 @@ class _DeviceCardState extends State<NotificationCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: widget.cardColor,
-            borderRadius: const SmoothBorderRadius.all(
-                SmoothRadius(cornerRadius: 25, cornerSmoothing: 0.8)),
-            border: const GradientBoxBorder(
-                width: 1.5,
-                gradient: LinearGradient(colors: [
-                  Color.fromARGB(0, 0, 0, 0),
-                  Colors.transparent,
-                  Color.fromARGB(0, 0, 0, 0)
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
-        width: widget.width,
-        height: widget.height,
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: 0),
-            child: Row(children: [
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(widget.doorStatus,
-                    style: GoogleFonts.getFont(
-                      "Montserrat",
-                      textStyle: TextStyle(fontSize: 24, color: AppColors.gray),
-                      fontWeight: FontWeight.w700,
-                    )),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: widget.timeStampPadding),
-                child: Text(widget.timeStamp,
-                    textAlign: TextAlign.end,
-                    style: GoogleFonts.getFont(
-                      "Montserrat",
-                      textStyle: TextStyle(fontSize: 24, color: AppColors.gray),
-                      fontWeight: FontWeight.w700,
-                    )),
-              ),
-            ]),
+      padding: EdgeInsets.only(
+          left: widget.paddingLeft,
+          right: widget.paddingRight,
+          top: 10,
+          bottom: 0),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return const HistoryPage();
+          }));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: widget.cardColor,
+              borderRadius: const SmoothBorderRadius.all(
+                  SmoothRadius(cornerRadius: 35, cornerSmoothing: 0.8)),
+              border: const GradientBoxBorder(
+                  width: 1.5,
+                  gradient: LinearGradient(colors: [
+                    Color.fromARGB(0, 0, 0, 0),
+                    Colors.transparent,
+                    Color.fromARGB(0, 0, 0, 0)
+                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter))),
+          width: widget.width,
+          height: widget.height,
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: widget.topPadding),
+              child: Row(children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Text(widget.doorStatus,
+                      style: GoogleFonts.getFont(
+                        "Montserrat",
+                        textStyle: TextStyle(
+                            fontSize: widget.fontSize, color: AppColors.gray),
+                        fontWeight: FontWeight.w600,
+                      )),
+                ),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text(widget.timeStamp,
+                      textAlign: TextAlign.end,
+                      style: GoogleFonts.getFont(
+                        "Montserrat",
+                        textStyle: TextStyle(
+                            fontSize: widget.fontSize, color: AppColors.gray),
+                        fontWeight: FontWeight.w600,
+                      )),
+                ),
+              ]),
+            ),
           ),
         ),
       ),

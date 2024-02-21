@@ -21,12 +21,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static String? lastUser;
-  List<String> doorStatusArray = ['', ''];
-  List<Color> notiCardColor = [AppColors.lightGray, AppColors.lightGray];
-  List<String> timeStamps = ['', ''];
-  List<double> timeStampPaddings = [120, 120];
+  List<String> doorStatusArray = [''];
+  List<Color> notiCardColor = [AppColors.lightGray];
+  List<String> timeStamps = [''];
   List<double> widths = [200, 330];
-  List<double> heights = [70, 200];
+  List<double> heights = [70, 330];
+  List<double> paddingsLeft = [30, 0];
+  List<double> paddingsRight = [30, 0];
+  List<double> topPaddings = [0, 260];
+  List<double> fontSizes = [24, 24];
   @override
   void initState() {
     super.initState();
@@ -46,15 +49,25 @@ class _HomePageState extends State<HomePage> {
             doorStatusArray.add(isLocked ? "Unlocked" : "Locked");
             notiCardColor
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
-            timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
-            timeStampPaddings.add(isLocked ? 110 : 140);
-            //ListScroll.controller.jumpTo(doorStatusArray.length * 45);
+            if (doorStatusArray.length == 2) {
+              widths[1] = 330;
+              heights[1] = 330;
+              widths[0] = 200;
+              heights[0] = 70;
+              paddingsLeft[1] = 0;
+              paddingsRight[1] = 0;
+              paddingsLeft[0] = 30;
+              paddingsRight[0] = 30;
+              topPaddings[1] = 260;
+              topPaddings[0] = 0;
+            }
             if (doorStatusArray.length > 2) {
               doorStatusArray.removeAt(0);
               notiCardColor.removeAt(0);
               timeStamps.removeAt(0);
-              timeStampPaddings.removeAt(0);
             }
+            timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
+            //ListScroll.controller.jumpTo(doorStatusArray.length * 45);
           });
         }
       });
@@ -73,7 +86,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10),
       child: Container(
-        height: 400,
+        height: 460,
         width: 330,
         child: ListView.builder(
           controller: ListScroll.controller,
@@ -85,9 +98,12 @@ class _HomePageState extends State<HomePage> {
               doorStatus: doorStatusArray[index],
               cardColor: notiCardColor[index],
               timeStamp: timeStamps[index],
-              timeStampPadding: timeStampPaddings[index],
               width: widths[index],
               height: heights[index],
+              paddingLeft: paddingsLeft[index],
+              paddingRight: paddingsRight[index],
+              topPadding: topPaddings[index],
+              fontSize: fontSizes[index],
             );
           },
         ),

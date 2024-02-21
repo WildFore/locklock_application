@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   static String lastUserId = "";
-  static String username = "";
+  static String? username = "";
   static String? userIdStream;
 
   getCurrentUser() async {
@@ -65,13 +65,8 @@ class AuthService {
         // Do something with userInfoMap
         print(userDetails.providerData);
         lastUserId = userDetails.uid;
+        username = userDetails.displayName;
 
-        User? firebaseUser = FirebaseAuth.instance.currentUser;
-        FirebaseFirestore.instance.collection("users").doc("$lastUserId").set({
-          'user-name': userDetails.displayName,
-          'door-status': 'false',
-          'need-calibration': 'false'
-        });
         prefs.setString('user', lastUserId);
         prefs.setString('img', userDetails.photoURL.toString());
         prefs.setString('username', userDetails.displayName.toString());
@@ -92,7 +87,8 @@ class AuthService {
 
   static InitializeUserData() async {
     DatabaseReference ref = FirebaseDatabase.instance.ref("$lastUserId");
-    await ref.set({'username:': , 'needCalibrationOpen': 0, "doorStatus": false});
+    await ref.set(
+        {'username:': username, 'needCalibrationOpen': 0, "doorStatus": false});
   }
 
   static logOut() async {
