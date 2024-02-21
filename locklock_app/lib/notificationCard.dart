@@ -52,7 +52,7 @@ class _DeviceCardState extends State<NotificationCard> {
           decoration: BoxDecoration(
               color: widget.cardColor,
               borderRadius: const SmoothBorderRadius.all(
-                  SmoothRadius(cornerRadius: 35, cornerSmoothing: 0.8)),
+                  SmoothRadius(cornerRadius: 45, cornerSmoothing: 0.8)),
               border: const GradientBoxBorder(
                   width: 1.5,
                   gradient: LinearGradient(colors: [
@@ -67,25 +67,25 @@ class _DeviceCardState extends State<NotificationCard> {
               padding: EdgeInsets.only(top: widget.topPadding),
               child: Row(children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: EdgeInsets.only(left: 30),
                   child: Text(widget.doorStatus,
                       style: GoogleFonts.getFont(
                         "Montserrat",
                         textStyle: TextStyle(
                             fontSize: widget.fontSize, color: AppColors.gray),
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w800,
                       )),
                 ),
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(right: 30),
                   child: Text(widget.timeStamp,
                       textAlign: TextAlign.end,
                       style: GoogleFonts.getFont(
                         "Montserrat",
                         textStyle: TextStyle(
                             fontSize: widget.fontSize, color: AppColors.gray),
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w800,
                       )),
                 ),
               ]),

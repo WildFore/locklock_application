@@ -88,10 +88,10 @@ class _HomeState extends State<Home> {
               fontWeight: FontWeight.w700,
             )),
         body: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 50),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 0),
           child: Container(
             child: Padding(
-              padding: EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 35),
+              padding: EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 0),
               child: pages[_selectedIndexPage],
             ),
           ),

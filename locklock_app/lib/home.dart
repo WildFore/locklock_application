@@ -25,11 +25,11 @@ class _HomePageState extends State<HomePage> {
   List<Color> notiCardColor = [AppColors.lightGray];
   List<String> timeStamps = [''];
   List<double> widths = [200, 330];
-  List<double> heights = [70, 330];
+  List<double> heights = [70, 400];
   List<double> paddingsLeft = [30, 0];
   List<double> paddingsRight = [30, 0];
-  List<double> topPaddings = [0, 260];
-  List<double> fontSizes = [24, 24];
+  List<double> topPaddings = [0, 300];
+  List<double> fontSizes = [24, 30];
   @override
   void initState() {
     super.initState();
@@ -51,14 +51,14 @@ class _HomePageState extends State<HomePage> {
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
             if (doorStatusArray.length == 2) {
               widths[1] = 330;
-              heights[1] = 330;
+              heights[1] = 400;
               widths[0] = 200;
               heights[0] = 70;
               paddingsLeft[1] = 0;
               paddingsRight[1] = 0;
               paddingsLeft[0] = 30;
               paddingsRight[0] = 30;
-              topPaddings[1] = 260;
+              topPaddings[1] = 300;
               topPaddings[0] = 0;
             }
             if (doorStatusArray.length > 2) {
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10),
       child: Container(
-        height: 460,
+        height: 500,
         width: 330,
         child: ListView.builder(
           controller: ListScroll.controller,
