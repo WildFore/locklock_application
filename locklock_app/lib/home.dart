@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             notiCardColor
                 .add(isLocked ? AppColors.robinEggBlue : AppColors.crayola);
             timeStamps.add(DateTime.now().hour.toString() + ":" + getMinutes());
-            timeStampPaddings.add(isLocked ? 140 : 110);
+            timeStampPaddings.add(isLocked ? 110 : 140);
             //ListScroll.controller.jumpTo(doorStatusArray.length * 45);
             if (doorStatusArray.length > 5) {
               doorStatusArray.removeAt(0);
