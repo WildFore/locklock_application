@@ -71,11 +71,11 @@ class _DeviceCardState extends State<NotificationCard> {
             child: Padding(
               padding: EdgeInsets.only(top: widget.topPadding),
               child: Column(children: [
-                Image.asset(
+                /*Image.asset(
                   '/assets/app.png',
                   width: 100,
                   height: 100,
-                ),
+                ),*/
                 Row(children: [
                   Padding(
                     padding: EdgeInsets.only(left: 30),
