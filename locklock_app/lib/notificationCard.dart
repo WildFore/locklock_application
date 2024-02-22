@@ -44,7 +44,7 @@ class _DeviceCardState extends State<NotificationCard> {
       padding: EdgeInsets.only(
           left: widget.paddingLeft,
           right: widget.paddingRight,
-          top: 10,
+          top: 5,
           bottom: 0),
       child: GestureDetector(
         onTap: () {},
@@ -52,7 +52,7 @@ class _DeviceCardState extends State<NotificationCard> {
           decoration: BoxDecoration(
               color: widget.cardColor,
               borderRadius: const SmoothBorderRadius.all(
-                  SmoothRadius(cornerRadius: 45, cornerSmoothing: 0.8)),
+                  SmoothRadius(cornerRadius: 55, cornerSmoothing: 1)),
               border: const GradientBoxBorder(
                   width: 1.5,
                   gradient: LinearGradient(colors: [
@@ -65,29 +65,36 @@ class _DeviceCardState extends State<NotificationCard> {
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(top: widget.topPadding),
-              child: Row(children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 30),
-                  child: Text(widget.doorStatus,
-                      style: GoogleFonts.getFont(
-                        "Montserrat",
-                        textStyle: TextStyle(
-                            fontSize: widget.fontSize, color: AppColors.gray),
-                        fontWeight: FontWeight.w800,
-                      )),
+              child: Column(children: [
+                Image.asset(
+                  '/assets/app.png',
+                  width: 100,
+                  height: 100,
                 ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30),
-                  child: Text(widget.timeStamp,
-                      textAlign: TextAlign.end,
-                      style: GoogleFonts.getFont(
-                        "Montserrat",
-                        textStyle: TextStyle(
-                            fontSize: widget.fontSize, color: AppColors.gray),
-                        fontWeight: FontWeight.w800,
-                      )),
-                ),
+                Row(children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text(widget.doorStatus,
+                        style: GoogleFonts.getFont(
+                          "Montserrat",
+                          textStyle: TextStyle(
+                              fontSize: widget.fontSize, color: AppColors.gray),
+                          fontWeight: FontWeight.w700,
+                        )),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30),
+                    child: Text(widget.timeStamp,
+                        textAlign: TextAlign.end,
+                        style: GoogleFonts.getFont(
+                          "Montserrat",
+                          textStyle: TextStyle(
+                              fontSize: widget.fontSize, color: AppColors.gray),
+                          fontWeight: FontWeight.w700,
+                        )),
+                  ),
+                ]),
               ]),
             ),
           ),

@@ -191,8 +191,9 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       )),
                 ),
+                Spacer(),
                 Padding(
-                  padding: EdgeInsets.only(left: 10, top: 10),
+                  padding: EdgeInsets.only(right: 20, top: 10),
                   child: ClipRRect(
                       borderRadius: const SmoothBorderRadius.only(
                           topLeft: SmoothRadius(

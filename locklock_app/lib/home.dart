@@ -21,15 +21,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static String? lastUser;
-  List<String> doorStatusArray = [''];
-  List<Color> notiCardColor = [AppColors.lightGray];
-  List<String> timeStamps = [''];
-  List<double> widths = [200, 330];
-  List<double> heights = [70, 400];
-  List<double> paddingsLeft = [30, 0];
-  List<double> paddingsRight = [30, 0];
-  List<double> topPaddings = [0, 300];
-  List<double> fontSizes = [24, 30];
+  List<String> doorStatusArray = ['', '', ''];
+  List<Color> notiCardColor = [
+    AppColors.lightGray,
+    AppColors.lightGray,
+    AppColors.lightGray
+  ];
+  List<String> timeStamps = ['', '', ''];
+  List<double> widths = [100, 200, 310];
+  List<double> heights = [12, 12, 400];
+  List<double> paddingsLeft = [120, 80, 0];
+  List<double> paddingsRight = [120, 80, 0];
+  List<double> topPaddings = [0, 0, 0];
+  List<double> fontSizes = [0, 0, 28];
   @override
   void initState() {
     super.initState();
@@ -53,15 +57,15 @@ class _HomePageState extends State<HomePage> {
               widths[1] = 330;
               heights[1] = 400;
               widths[0] = 200;
-              heights[0] = 70;
+              heights[0] = 20;
               paddingsLeft[1] = 0;
               paddingsRight[1] = 0;
-              paddingsLeft[0] = 30;
-              paddingsRight[0] = 30;
-              topPaddings[1] = 300;
+              paddingsLeft[0] = 60;
+              paddingsRight[0] = 60;
+              topPaddings[1] = 0;
               topPaddings[0] = 0;
             }
-            if (doorStatusArray.length > 2) {
+            if (doorStatusArray.length > 3) {
               doorStatusArray.removeAt(0);
               notiCardColor.removeAt(0);
               timeStamps.removeAt(0);

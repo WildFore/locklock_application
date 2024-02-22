@@ -87,12 +87,14 @@ class _HomeState extends State<Home> {
                   TextStyle(fontSize: 32, color: AppColors.antiFlashWhite),
               fontWeight: FontWeight.w700,
             )),
-        body: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 0),
-          child: Container(
-            child: Padding(
-              padding: EdgeInsets.only(left: 0, right: 0, top: 10, bottom: 0),
-              child: pages[_selectedIndexPage],
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 0),
+            child: Container(
+              child: Padding(
+                padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+                child: pages[_selectedIndexPage],
+              ),
             ),
           ),
         ),
