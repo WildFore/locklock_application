@@ -87,7 +87,7 @@ class _DeviceCardState extends State<NotificationCard> {
                             textStyle: TextStyle(
                                 fontSize: widget.fontSize,
                                 color: AppColors.gray),
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                           )),
                     ),
                     Spacer(),
@@ -100,7 +100,7 @@ class _DeviceCardState extends State<NotificationCard> {
                             textStyle: TextStyle(
                                 fontSize: widget.fontSize,
                                 color: AppColors.gray),
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                           )),
                     ),
                   ]),
