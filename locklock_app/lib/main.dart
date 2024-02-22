@@ -8,6 +8,7 @@ import 'package:locklock_app/firebase_options.dart';
 import 'package:locklock_app/home.dart';
 import 'package:locklock_app/services/auth_service.dart';
 import 'package:locklock_app/settings.dart';
+import 'package:locklock_app/subpages/history.dart';
 import 'package:locklock_app/subpages/pairDevice.dart';
 import 'appColors.dart';
 
@@ -87,16 +88,67 @@ class _HomeState extends State<Home> {
                   TextStyle(fontSize: 32, color: AppColors.antiFlashWhite),
               fontWeight: FontWeight.w700,
             )),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 0),
-            child: Container(
+        body: Column(
+          children: [
+            Center(
               child: Padding(
-                padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
-                child: pages[_selectedIndexPage],
+                padding:
+                    EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 0),
+                child: Container(
+                  height: 400,
+                  child: pages[_selectedIndexPage],
+                ),
               ),
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: ClipRRect(
+                borderRadius: SmoothBorderRadius.all(
+                    SmoothRadius(cornerRadius: 30, cornerSmoothing: 1)),
+                child: Container(
+                  width: 120,
+                  height: 40,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  child: Builder(builder: (context) {
+                    return ElevatedButton.icon(
+                      icon: Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Icon(
+                          CupertinoIcons.doc_text,
+                          size: 20,
+                          color: AppColors.gray,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        padding: const MaterialStatePropertyAll(
+                            EdgeInsets.only(left: 0)),
+                        elevation: const MaterialStatePropertyAll(0),
+                        splashFactory: NoSplash.splashFactory,
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColors.antiFlashWhite),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HistoryPage(),
+                        ));
+                      },
+                      label: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text("History",
+                              style: GoogleFonts.getFont(
+                                "Montserrat",
+                                textStyle: TextStyle(
+                                    fontSize: 18, color: AppColors.gray),
+                                fontWeight: FontWeight.w600,
+                              ))),
+                    );
+                  }),
+                ),
+              ),
+            )
+          ],
         ),
         backgroundColor: const Color.fromARGB(255, 30, 30, 30),
         bottomNavigationBar: Container(

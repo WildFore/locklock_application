@@ -21,19 +21,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static String? lastUser;
-  List<String> doorStatusArray = ['', '', ''];
+  List<String> doorStatusArray = ['', '', '', ''];
   List<Color> notiCardColor = [
+    AppColors.lightGray,
     AppColors.lightGray,
     AppColors.lightGray,
     AppColors.lightGray
   ];
-  List<String> timeStamps = ['', '', ''];
-  List<double> widths = [100, 200, 310];
-  List<double> heights = [12, 12, 400];
-  List<double> paddingsLeft = [120, 80, 0];
-  List<double> paddingsRight = [120, 80, 0];
-  List<double> topPaddings = [0, 0, 0];
-  List<double> fontSizes = [0, 0, 28];
+  List<String> timeStamps = ['', '', '', ''];
+  List<double> widths = [310, 310, 310, 310];
+  List<double> heights = [70, 70, 70, 70];
+  List<double> paddingsLeft = [0, 0, 0, 0];
+  List<double> paddingsRight = [0, 0, 0, 0];
+  List<double> topPaddings = [0, 0, 0, 0];
+  List<double> fontSizes = [28, 28, 28, 28];
   @override
   void initState() {
     super.initState();

@@ -44,7 +44,7 @@ class _DeviceCardState extends State<NotificationCard> {
       padding: EdgeInsets.only(
           left: widget.paddingLeft,
           right: widget.paddingRight,
-          top: 5,
+          top: 10,
           bottom: 0),
       child: GestureDetector(
         onTap: () {
@@ -76,30 +76,36 @@ class _DeviceCardState extends State<NotificationCard> {
                   width: 100,
                   height: 100,
                 ),*/
-                Row(children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 30),
-                    child: Text(widget.doorStatus,
-                        style: GoogleFonts.getFont(
-                          "Montserrat",
-                          textStyle: TextStyle(
-                              fontSize: widget.fontSize, color: AppColors.gray),
-                          fontWeight: FontWeight.w700,
-                        )),
-                  ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 30),
-                    child: Text(widget.timeStamp,
-                        textAlign: TextAlign.end,
-                        style: GoogleFonts.getFont(
-                          "Montserrat",
-                          textStyle: TextStyle(
-                              fontSize: widget.fontSize, color: AppColors.gray),
-                          fontWeight: FontWeight.w700,
-                        )),
-                  ),
-                ]),
+                Spacer(),
+                Center(
+                  child: Row(children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 30),
+                      child: Text(widget.doorStatus,
+                          style: GoogleFonts.getFont(
+                            "Montserrat",
+                            textStyle: TextStyle(
+                                fontSize: widget.fontSize,
+                                color: AppColors.gray),
+                            fontWeight: FontWeight.w700,
+                          )),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: Text(widget.timeStamp,
+                          textAlign: TextAlign.end,
+                          style: GoogleFonts.getFont(
+                            "Montserrat",
+                            textStyle: TextStyle(
+                                fontSize: widget.fontSize,
+                                color: AppColors.gray),
+                            fontWeight: FontWeight.w700,
+                          )),
+                    ),
+                  ]),
+                ),
+                Spacer(),
               ]),
             ),
           ),
