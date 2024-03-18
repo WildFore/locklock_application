@@ -101,50 +101,55 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 10),
               child: ClipRRect(
                 borderRadius: SmoothBorderRadius.all(
                     SmoothRadius(cornerRadius: 30, cornerSmoothing: 1)),
                 child: Container(
                   width: 120,
-                  height: 40,
+                  height: 30,
                   decoration: const BoxDecoration(
                     color: Colors.transparent,
                   ),
-                  child: Builder(builder: (context) {
-                    return ElevatedButton.icon(
-                      icon: Padding(
-                        padding: const EdgeInsets.only(left: 12),
-                        child: Icon(
-                          CupertinoIcons.doc_text,
-                          size: 20,
-                          color: AppColors.gray,
+                  child: Visibility(
+                    visible: visibility,
+                    child: Builder(builder: (context) {
+                      return ElevatedButton.icon(
+                        icon: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Icon(
+                              CupertinoIcons.doc_text_fill,
+                              size: 18,
+                              color: AppColors.gray,
+                            ),
+                          ),
                         ),
-                      ),
-                      style: ButtonStyle(
-                        padding: const MaterialStatePropertyAll(
-                            EdgeInsets.only(left: 0)),
-                        elevation: const MaterialStatePropertyAll(0),
-                        splashFactory: NoSplash.splashFactory,
-                        backgroundColor:
-                            MaterialStatePropertyAll(AppColors.antiFlashWhite),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HistoryPage(),
-                        ));
-                      },
-                      label: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("History",
-                              style: GoogleFonts.getFont(
-                                "Montserrat",
-                                textStyle: TextStyle(
-                                    fontSize: 18, color: AppColors.gray),
-                                fontWeight: FontWeight.w600,
-                              ))),
-                    );
-                  }),
+                        style: ButtonStyle(
+                          padding: const MaterialStatePropertyAll(
+                              EdgeInsets.only(right: 10)),
+                          elevation: const MaterialStatePropertyAll(0),
+                          splashFactory: NoSplash.splashFactory,
+                          backgroundColor: MaterialStatePropertyAll(
+                              AppColors.antiFlashWhite),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HistoryPage(),
+                          ));
+                        },
+                        label: Align(
+                            alignment: Alignment.center,
+                            child: Text("History",
+                                style: GoogleFonts.getFont(
+                                  "Montserrat",
+                                  textStyle: TextStyle(
+                                      fontSize: 18, color: AppColors.gray),
+                                  fontWeight: FontWeight.w600,
+                                ))),
+                      );
+                    }),
+                  ),
                 ),
               ),
             )
