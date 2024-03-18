@@ -30,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 borderRadius: SmoothBorderRadius(
                     cornerRadius: 35, cornerSmoothing: 0.8))),
         child: Padding(
-          padding: const EdgeInsets.only(top: 120),
+          padding: const EdgeInsets.only(top: 80),
           child: Column(
             children: [
               Row(children: [
