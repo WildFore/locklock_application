@@ -57,7 +57,7 @@ class _DeviceCardState extends State<NotificationCard> {
           decoration: BoxDecoration(
               color: widget.cardColor,
               borderRadius: const SmoothBorderRadius.all(
-                  SmoothRadius(cornerRadius: 30, cornerSmoothing: 1)),
+                  SmoothRadius(cornerRadius: 55, cornerSmoothing: 1)),
               border: const GradientBoxBorder(
                   width: 1.5,
                   gradient: LinearGradient(colors: [
