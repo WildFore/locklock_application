@@ -80,7 +80,7 @@ class _DeviceCardState extends State<NotificationCard> {
                 Center(
                   child: Row(children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: 30),
                       child: Text(widget.doorStatus,
                           style: GoogleFonts.getFont(
                             "Montserrat",
@@ -92,7 +92,7 @@ class _DeviceCardState extends State<NotificationCard> {
                     ),
                     Spacer(),
                     Padding(
-                      padding: const EdgeInsets.only(right: 20),
+                      padding: const EdgeInsets.only(right: 30),
                       child: Text(widget.timeStamp,
                           textAlign: TextAlign.end,
                           style: GoogleFonts.getFont(
